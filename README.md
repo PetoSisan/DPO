@@ -4,7 +4,9 @@ Thi project helps to automate the filling of binding statement DPO (**Záväzné
 
 ## Requirements
 1. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This request is required by Project sponsor.
-2. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements. (For security reasons not added in this repo)
+2. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
+
+These files are **not** added to this repo for security reasons.
 
 ## Usage
 To run the project, use:
