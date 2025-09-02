@@ -1,9 +1,3 @@
-import sys
-import os
-
-# Add the folder containing main.py to module search path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 from xmlReader import read_XML
 from parser import parse
 from shutil import copy
@@ -29,7 +23,7 @@ def main() -> None:
         data = read_XML(input_file)
         applicant, project_owner, project = parse(data)
 
-        new_doc = f"Záväzné vyjadrenie DPO {applicant.get_full_name()} ({timestamp}).docx"
+        new_doc = f"{project.id} - DPO ({timestamp}).docx"
         copy(template_name, new_doc)
 
         fill_doc(new_doc, applicant, project_owner, project, timestamp)
@@ -43,7 +37,7 @@ def main() -> None:
     
     log_name = f"log_{timestamp}.txt"
     log(log_name, new_doc, timestamp, error, applicant, project_owner)
-    print(f"Program zbehol. Záznam o priebehu je v súbore {log_name}")
+    print(f"Program prebehol. Záznam o priebehu programu je v súbore {log_name}")
     input("Press Enter to exit...")
         
 

@@ -1,6 +1,5 @@
-VZOR - Záväzné vyjadrenie DPO.docx
+*.docx
 __pycache__
-log_*.txt
+*.txt
 *.xml
-Záväzné vyjadrenie DPO*.docx
 parser.py
