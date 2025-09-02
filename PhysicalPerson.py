@@ -1,0 +1,23 @@
+from Address import Address
+from Person import Person
+
+class PhysicalPerson(Person):
+    def __init__(self, title: str = "", name: str = "", surname: str = "", address: Address | None = None, phone: str = "", mail: str = ""):
+        super().__init__(name, address, phone, mail)
+        self.title = title
+        self.surname = surname
+        
+        self.required.add(self.surname)
+    
+    def get_full_name(self) -> str:
+        return f"{self.name} {self.surname}"
+    
+    def to_string(self) -> str:
+        address = self.address.to_string() if self.address is not None else ""
+        title = self.title
+        if len(self.title) != 0:
+            title += " "
+        return f"{self.title}{self.get_full_name()} \n{address} \n{self.phone} \n{self.mail}"
+    
+
+    
