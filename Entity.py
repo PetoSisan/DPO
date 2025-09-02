@@ -14,6 +14,9 @@ class Entity(ABC):
         
         return attrs
     
+    def format_attribute(self, name: str, value) -> str:
+        return f"{name}: {value}" if value is not None and value != "" else ""
+    
 
     @abstractmethod
     def is_missing(self, attr) -> bool:

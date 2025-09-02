@@ -17,7 +17,11 @@ class PhysicalPerson(Person):
         title = self.title
         if len(self.title) != 0:
             title += " "
-        return f"{self.title}{self.get_full_name()} \n{address} \n{self.phone} \n{self.mail}"
-    
+        return (
+            f"""{self.title}{self.get_full_name()}
+            {self.format_attribute("Adresa", address)}
+            {self.format_attribute("Tel. číslo", self.phone)}
+            {self.format_attribute("Email", self.mail)}"""
+        )
 
     

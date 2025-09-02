@@ -14,7 +14,7 @@ class Address(Entity):
     
     
     def to_string(self) -> str:
-        return f"{self.street} {self.building_number} \n{self.postal_code} {self.city}"
+        return f"""{self.street} {self.building_number}, {self.postal_code} {self.city}"""
     
 
     def is_complete(self) -> bool:
