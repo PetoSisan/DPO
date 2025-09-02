@@ -3,3 +3,4 @@ __pycache__
 log_*.txt
 *.xml
 Záväzné vyjadrenie DPO*.docx
+parser.py
