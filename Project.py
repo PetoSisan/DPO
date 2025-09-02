@@ -1,22 +1,23 @@
 from Address import Address
+from Facility import Facility
 
 Cadastral_territory = str
 Register = str
 Parcel = str
 Code = str
 Title = str
-Construction_object = tuple[Code, Title]
+
 Construction_parcels = dict[Cadastral_territory, dict[Register, Parcel]]
 
 class Project:
     def __init__(self, id: str, title: str, adress: Address,
                  construction_parcels: Construction_parcels,
-                 construction_objects: list[Construction_object]):
+                 facilities: list[Facility]):
         self.id = id
         self.title = title
         self.address = adress
         self.construction_parcels = construction_parcels
-        self.construction_objects = construction_objects
+        self.facilities = facilities
     
 
     def format_parcels(self) -> str:
@@ -42,17 +43,40 @@ class Project:
         return result
     
 
-    def format_objects(self) -> str:
+    def format_facilities(self) -> str:
         result = ""
-        header_1 = "Kód stavebného objektu"
-        header_2 = "Názov stavebného objektu"
-        len_1 = len(header_1) + 5
-        len_2 = len(header_2) + 5
+        for facility in self.facilities:
+            result += self.format_facility(facility)
+            result += "\n"
+        
+        return result
 
-        for code, title in self.construction_objects:
-            result += f"{code:<{len_1}} | {title:<{len_2}} \n"
+        
+    
+    def format_facility(self, facility: Facility) -> str:
+        result = ""
+        if facility.code != "":
+            result += f"Kód stavby: {facility.code}, "
+            
+        if facility.title != "":
+            result += f"Názov stavby: {facility.title}, "
+        
+        if facility.construction_class != "":
+            result += f"Typ stavby: {facility.construction_class} \n"
+        
+
+
+        header_1 = 13 # Kód stavebného objektu
+        header_2 = len("Názov stavebného objektu") + 5 # Názov stavebného objektu
+
+        if len(facility.parts) != 0:
+            result += "Stavebné objekty:\n"
+
+        for part in facility.parts:
+            result += f"{part.code:<{header_1}} | {part.title:<{header_2}} \n"
 
         return result
+
 
 
 

@@ -43,12 +43,11 @@ def fill(doc: Document, cell, applicant: Person, project_owner: Person, project:
     
     if cell.text == "Členenie stavby":
         next_cell = doc.tables[table].rows[row].cells[c + 1]
-        next_cell.text = project.format_objects()
+        next_cell.text = project.format_facilities()
 
 
 
 def fill_doc(file_name: str, applicant: Person, project_owner: Person, project: Project, timestamp: str) -> list[str]:
-        
     doc = Document(file_name)   
 
     for t, table in enumerate(doc.tables):
