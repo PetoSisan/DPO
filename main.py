@@ -37,7 +37,12 @@ def main() -> None:
     
     log_name = f"log_{timestamp}.txt"
     log(log_name, new_doc, timestamp, error, applicant, project_owner)
-    print(f"Program prebehol. Záznam o priebehu programu je v súbore {log_name}")
+
+    success = "úspešne" if error == "" else "neúspešne"
+    print(f"Program prebehol {success}.")
+    print(error)
+    print(f"Záznam o priebehu programu je uložený v súbore {log_name}")
+
     input("Press Enter to exit...")
         
 
