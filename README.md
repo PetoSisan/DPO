@@ -7,6 +7,7 @@ Thi project helps to automate the filling of binding statement DPO (**Záväzné
 2. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
 
 These files are **not** added to this repo for security reasons.
+The file `parser.py` parsing the structured request data is **not** included too.
 
 ## Usage
 To run the project, use:
@@ -18,7 +19,7 @@ python3 main.py
 ## Output
 Program creates two new files:
 - `log_{time_stamp}.txt` - informs user about success / failure of the script
-- `Záväzné vyjadrenie DPO {applicant.get_full_name()} ({timestamp}).docx` - the generated binding statement
+- `{Project.id} - DPO ({timestamp}).docx` - the generated binding statement
 
 
 ## Project status
