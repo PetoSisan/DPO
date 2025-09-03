@@ -19,9 +19,9 @@ class PhysicalPerson(Person):
             title += " "
         return (
             f"""{self.title}{self.get_full_name()}
-            {self.format_attribute("Adresa", address)}
-            {self.format_attribute("Tel. číslo", self.phone)}
-            {self.format_attribute("Email", self.mail)}"""
+{self.format_attribute("Adresa", address)}
+{self.format_attribute("Tel. číslo", self.phone)}
+{self.format_attribute("Email", self.mail)}"""
         )
 
     
