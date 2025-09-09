@@ -9,8 +9,7 @@ class Address(Entity):
         self.county = county
         self.country = country
         
-        
-        self.required = {self.street, self.building_number, self.postal_code, self.city}
+        self.required = self.__dict__.keys() - {"required", "county", "country"}
     
     
     def to_string(self) -> str:

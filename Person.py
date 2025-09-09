@@ -9,7 +9,7 @@ class Person(Entity):
         self.address = address
         self.phone = phone
         self.mail = mail
-        self.required = {name, address, phone, mail}
+        self.required = self.__dict__.keys()
     
 
     def is_complete(self) -> bool:

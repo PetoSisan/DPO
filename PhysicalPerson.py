@@ -7,7 +7,7 @@ class PhysicalPerson(Person):
         self.title = title
         self.surname = surname
         
-        self.required.add(self.surname)
+        self.required = self.__dict__.keys() - {"required", "title"}
     
     def get_full_name(self) -> str:
         return f"{self.name} {self.surname}"

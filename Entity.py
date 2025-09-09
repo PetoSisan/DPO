@@ -6,8 +6,8 @@ class Entity(ABC):
     
     def get_missing_attrs(self):
         attrs = []
-        required = self.required & self.__dict__.keys()
-        for attr in required:
+        
+        for attr in self.required:
             value = getattr(self, attr)
             if self.is_missing(value):
                  attrs.append(attr)

@@ -8,9 +8,8 @@ class Corporate(Person):
         self.ICO = ICO
         self.person = person
 
-        self.required.add(self.ICO)
-        self.required.add(self.person)
-        self.person.required = {self.person.name, self.person.surname}
+        self.required = self.__dict__.keys() - {"required"}
+        self.person.required = {"name", "surname"}
     
     def get_full_name(self) -> str:
         return self.name
