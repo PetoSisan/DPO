@@ -18,7 +18,7 @@ python3 main.py
 
 ## Output
 Program creates two new files:
-- `log_{time_stamp}.txt` - informs user about success / failure of the script
+- `log_{success}_{time_stamp}.txt` - informs user about success / failure of the script
 - `{Project.id} - DPO ({timestamp}).docx` - the generated binding statement
 
 
