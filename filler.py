@@ -22,14 +22,17 @@ def fill(doc: Document, cell, applicant: Person, project_owner: Person, project:
     elif text == "Žiadateľ":
         next_cell = doc.tables[table].rows[row].cells[c + 1]
         next_cell.text = applicant.to_string()
+
         if not applicant.is_complete():
-            next_cell.text += f"\n\n{INCOMPLETE_DATA}"
+            next_cell.text += f"\n{INCOMPLETE_DATA}\n"
+            
     
     elif text == "Stavebník":
         next_cell = doc.tables[table].rows[row].cells[c + 1]
         next_cell.text = project_owner.to_string()
+
         if not project_owner.is_complete():
-            next_cell.text += f"\n\n{INCOMPLETE_DATA}"
+            next_cell.text += f"\n{INCOMPLETE_DATA}\n"
     
     elif "ID stavby" in cell.text:
         next_cell = doc.tables[table].rows[row].cells[c + 1]
