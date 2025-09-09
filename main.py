@@ -1,5 +1,6 @@
 from xmlReader import read_XML
 from parser import parse
+from parser import get_project_id
 from shutil import copy
 from datetime import datetime
 from filler import fill_doc
@@ -15,7 +16,9 @@ def main() -> None:
 
     applicant = None
     project_owner = None
+    project = None
     new_doc = ""
+    data = None
     
     try:
         template_name = "VZOR - Záväzné vyjadrenie DPO.docx"
@@ -30,14 +33,22 @@ def main() -> None:
     
     except FileNotFoundError as e:
         error = "Súbor sa nenašiel. Prosím skontrolujte, či zadaný súbor existuje v pracovnom adresári." \
-                " Vyhodená chyba: \n" + str(e)
+                f" Vyhodená chyba: \n {str(e)} \n"
     
     except Exception as e:
-        error = "Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n" + str(e)
+        error = f"Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n {str(e)} \n"
     
     success = "úspešne" if error == "" else "neúspešne"
     log_name = f"log_{success}_{timestamp}.txt"
-    log(log_name, new_doc, timestamp, error, applicant, project_owner)
+
+    project_id = "ID stavby nebolo nájdené"
+    if project is not None:
+        project_id = project.id
+    
+    if project is None and data is not None:
+        project_id = get_project_id(data)
+    
+    log(log_name, new_doc, error, applicant, project_owner, project_id)
 
     print(f"Program prebehol {success}.")
     if len(error) != 0:
@@ -45,7 +56,7 @@ def main() -> None:
 
     print(f"Záznam o priebehu programu je uložený v súbore {log_name}")
 
-    #input("Press Enter to exit...")
+    input("Press Enter to exit...")
         
 
 if __name__ == "__main__":
