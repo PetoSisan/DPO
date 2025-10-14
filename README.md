@@ -1,9 +1,13 @@
 # DPO
 Welcome to the DPO repository. 
-Thi project helps to automate the filling of binding statement DPO (**Záväzné vyjadrenie DPO**) for **Západoslovenská distibučná a.s.** company.
+This project helps to automate the filling of binding statement DPO (**Záväzné vyjadrenie DPO**) for **Západoslovenská distibučná a.s.** company.
+
+## Disclaimer
+- Information and error messages are written in Slovak, as this is more convenient for the users of this product.
+- I am **not** affiliated with *Západoslovenská distibučná a.s.* in any way. This project was created for my father, who works there, to help automate part of his workflow.
 
 ## Requirements
-1. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This request is required by Project sponsor.
+1. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This exact request (including naming of the `.xml` file) is required by Project owner.
 2. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
 
 These files are **not** added to this repo for security reasons.
@@ -23,4 +27,6 @@ Program creates two new files:
 
 
 ## Project status
-Project is currently **under development**.
+Project is currently working but there is still a lot space for improvements:
+1. There is still need to **write a documentation**.
+2. There is a possibility to create a GUI extension which needs to be firstly discussed with project owner.
