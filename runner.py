@@ -36,7 +36,7 @@ def run(cwd: Path, data_dir: Path) -> None:
         move(data, tmp)
 
     for file in data_dir.rglob("*.xml"):
-        print(f"Running test case: \"{file}\"")
+        print(f"Running case: \"{file}\"")
             
         copy(file, data)
         subprocess.run(["python", str(script)]) # subprocess.run([exe_path])  
