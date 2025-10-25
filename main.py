@@ -5,6 +5,8 @@ from shutil import copy
 from datetime import datetime
 from filler import fill_doc
 from loger import log
+from Person import Person
+from Project import Project
 
 
 def main() -> None:
@@ -14,9 +16,9 @@ def main() -> None:
     # Format it as YYYY-MM-DD_HH-MM
     timestamp = now.strftime("%Y-%m-%d_%H-%M")
 
-    applicant = None
-    project_owner = None
-    project = None
+    applicants: list[Person] | None = None
+    project_owners: list[Person] | None = None
+    project: Project = None
     new_doc = ""
     data = None
     
@@ -24,12 +26,12 @@ def main() -> None:
         template_name = "VZOR - Záväzné vyjadrenie DPO.docx"
         input_file = "šišan.xml" 
         data = read_XML(input_file)
-        applicant, project_owner, project = parse(data)
+        applicants, project_owners, project = parse(data)
 
         new_doc = f"{project.id} - DPO ({timestamp}).docx"
         copy(template_name, new_doc)
 
-        fill_doc(new_doc, applicant, project_owner, project, timestamp)
+        fill_doc(new_doc, applicants, project_owners, project, timestamp)
     
     except FileNotFoundError as e:
         error = "Súbor sa nenašiel. Prosím skontrolujte, či zadaný súbor existuje v pracovnom adresári." \
@@ -48,7 +50,7 @@ def main() -> None:
     if project is None and data is not None:
         project_id = get_project_id(data)
     
-    log(log_name, new_doc, error, applicant, project_owner, project_id)
+    log(log_name, new_doc, error, applicants, project_owners, project_id)
 
     print(f"Program prebehol {success}.")
     if len(error) != 0:
