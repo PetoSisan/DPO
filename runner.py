@@ -20,17 +20,18 @@ def parse_args():
     return args
 
 
-def run(cwd: Path, data_dir: Path) -> None:
-    script = Path(cwd / "main.py")
-    exe_path = Path(cwd / "main.exe")
-    data = Path(cwd / "šišan.xml")
+def run(data_dir: Path, dir: Path = Path.cwd()) -> None:
+
+    script = Path(dir / "main.py")
+    exe_path = Path(dir / "main.exe")
+    data = Path(dir / "šišan.xml")
 
     if not data_dir.is_dir():
         raise ValueError()
 
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-    tmp = Path(cwd / f"šišan_{timestamp}.xml")
+    tmp = Path(dir / f"šišan_{timestamp}.xml")
 
     if data.exists():
         move(data, tmp)
@@ -49,14 +50,13 @@ def run(cwd: Path, data_dir: Path) -> None:
     return
 
 def main():
-    cwd = Path.cwd()
     args = parse_args()
     data_dir = Path(args.dir)
 
     success = "úspešne"
 
     try:
-        run(cwd, data_dir)
+        run(data_dir)
     
     except ValueError as e:
         print(f"\"{data_dir}\" nie je priečinok. Skontrolujte prosím vstupný parameter a skúste znovu prosím.")
