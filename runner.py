@@ -1,10 +1,12 @@
 from pathlib import Path
-import subprocess
-from shutil import copy, move
+from shutil import move
 from datetime import datetime
 import argparse
 import os
 from sys import exit
+
+from main import main as xml_script
+from typing import Callable
 
 
 def parse_args():
@@ -14,7 +16,7 @@ def parse_args():
         None
     
     Returns:
-        Namespace: Namespace with --dir arg.
+        `Namespace`: `Namespace` with '--dir' arg.
     """
 
     parser = argparse.ArgumentParser(description="Optional --dir folder with .xml files serving as an data input")
@@ -32,36 +34,38 @@ def parse_args():
 
 All = int
 Successfull = int
-def process_dir(source_dir: Path,
-                target_dir: Path = Path.cwd(),
-                script_name: str = "main.py",
-                target_name: str = "šišan.xml",
-                file_type: str = "xml",
-                exe_name: str = "main.exe") -> tuple[All, Successfull]:
-    """Process files in 'source_dir' using 'script'.
+FileType = str
+def process_dir(source_dir: Path, file_type: str,
+                scripts: dict[FileType, Callable[[], int]],
+                ) -> tuple[All, Successfull]:
+    """Process files in `source_dir` using `scripts.get(file_type)` script.
     
     Args:
-        source_dir (Path): Path to directory with files which will be processed using 'script'
-        target_dir (Path): Path to directory for locating 'script', 'exe' and 'target'
-        script_name (str): Name of the script which will run
-        target_name (str): Name of the file, which will serve as an input for script (everything relevant from 'source_dir'
-              is step by step copied here. For more info regarding choice of default value of this arg see README.md)
-        file_type (str): type of processed files
-        exe_name (str): Name to .exe file which serves as a substitute to 'script' in deployment app. (TODO)
-
+        - `source_dir` (`Path`): Path to directory with files which will be processed using 'script'
+        - `file_type` (`str`): type of processed files
+        - `scripts` (`dict[FileType, Callable[[], int]]`): collection of all supported scripts
+            which can be called in this function. Correct script (based on context) is chosen according
+            `file_type` parameter 
+        
+        
     Returns:
-        None
+        -  `tuple[All, Successfull]` where:
+            - 'All' represents number of files processed
+            - 'Successfull' represents number of successfully processed files
     
     Raises:
-        ValueError: if 'source_dir' is not a directory
-        potentially other types of error based on the 'script'
+        `ValueError`: if `source_dir` is not a directory or if `file_type` is not in scripts as a key with associated script
     """
-    if not source_dir.is_dir() or not target_dir.is_dir():
-        raise ValueError(str(source_dir))
+    if not source_dir.is_dir():
+        raise ValueError(f"\"{source_dir}\" nie je priečinok. Skontrolujte prosím vstupný parameter a skúste znovu prosím.")
     
+    script: Callable[[], int] = scripts.get(file_type)
+    if script is None:
+        raise ValueError(f"Zadaný formát súborov \"{file_type}\" nie podporovaný na spracovanie.")
+    
+    target_dir = Path.cwd()
+    target_name: str = f"šišan.{file_type}"
     target = Path(target_dir / target_name)
-    script = Path(target_dir / script_name)
-    exe = Path(target_dir / exe_name)
 
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -76,7 +80,10 @@ def process_dir(source_dir: Path,
     for file in source_dir.rglob(f"*.{file_type}"):
         try:
             all += 1
-            error += run(file, target, script)
+            os.link(file, target)
+            error += run(script, target)
+            target.unlink()
+
         except Exception as e:
             print(f"Pri spracovani subora \"{file}\" vznikla neocakavana chyba :(.")
             print(f"Vyhodená chyba: {e}")
@@ -87,42 +94,60 @@ def process_dir(source_dir: Path,
     
     return (all, all - error)
 
-def run(source: Path, data: Path, script: Path):
-    """ Runs 'script' with data from 'source'.
+def run(script: Callable[[], int], source: Path) -> int:
+    """ Runs `script` with data from `source`.
 
     Args:
-        source (str): Path to input file with data
-        data (str): Path to file where data are copied
-    """
-    print(f"Running case: \"{source}\"")    
-    os.link(source, data)
-    
-    completed_process: subprocess.CompletedProcess \
-        = subprocess.run(["python", str(script)]) # subprocess.run([exe_path])
-    
-    data.unlink()
-    print(" ")
-    return completed_process.returncode
+        - `source` (`str`): Path to input file with data
+        - `data` (`str`): Path to file where data are copied
 
-def main():
+    Returns:
+        - `int`: return code of the script
+    """
+    print(f"Spracovávam súbor: \"{source}\"")    
+    rv = script()
+    print(" ")
+    return rv
+
+
+def main() -> int:
+    """Creates a 'DPOs' from files in `data_dir` with chosen file type with associated script.
+    
+    Args:
+        None
+    
+    Returns:
+        - `int`: 
+                `0` if no error occurs and all files were successfully processed
+                `1` if either `data_dir` is not directory or a not supported `file_type` was chosen
+                `2` if unexpected error occurs :(
+                `3` if no error occures but not all files were successfully processed
+    """
     args = parse_args()
     data_dir = Path(args.dir)
 
+    SCRIPTS: dict[str, Callable[[], int]] = {"xml": xml_script }
+
+    files_count = 0
+    successfull = 0
+
     try:
-        files_count, successfull = process_dir(data_dir)
+        files_count, successfull = process_dir(data_dir, "xml", SCRIPTS)
     
     except ValueError as e:
-        print(f"\"{data_dir}\" nie je priečinok. Skontrolujte prosím vstupný parameter a skúste znovu prosím.")
-        print(f"Vyhodená chyba: \n {str(e)}")
+        print(f"Pri spracovávaní priečinku {str(data_dir)} vznikla táto chyba: ")
+        print(str(e))
+        return 1
 
     except Exception as e:
-        print("Pri behu programu vznikla neočakávaná chyba: ")
+        print("Pri behu programu vznikla neočakávaná chyba :(. ")
         print(f"Vyhodená chyba: \n {str(e)}")
+        return 2
     
     print(f"Program úspešne spracoval z priečinka \"{str(data_dir)}\" {successfull} z {files_count} súborov.")
     input("Press Enter to exit...")
 
-    return 0 if successfull == files_count else 1
+    return 0 if successfull == files_count else 3
 
 
 if __name__ == "__main__":

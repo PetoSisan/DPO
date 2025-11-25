@@ -9,7 +9,7 @@ from Person import Person
 from Project import Project
 
 
-def main() -> None:
+def main() -> int:
     error = ""
     
     now = datetime.now()
@@ -57,8 +57,9 @@ def main() -> None:
         print(f"{error} \n")
 
     print(f"Záznam o priebehu programu je uložený v súbore {log_name}")
-
     input("Press Enter to exit...")
+
+    return 0 if error == "" else 1
         
 
 if __name__ == "__main__":
