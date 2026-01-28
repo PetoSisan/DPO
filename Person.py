@@ -9,12 +9,7 @@ class Person(Entity):
         self.address = address
         self.phone = phone
         self.mail = mail
-        self.required = self.__dict__.keys()
-    
-
-    def is_complete(self) -> bool:
-        return len(self.get_missing_attrs()) == 0 
-    
+        self.required = self.__dict__.keys()  
 
     def is_missing(self, attr) -> bool:
         if (isinstance(attr, Address) or isinstance(attr, Person)):
