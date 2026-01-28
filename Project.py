@@ -46,27 +46,7 @@ class Project:
     def format_facilities(self) -> str:
         result = ""
         for facility in self.facilities:
-            result += self.format_facility(facility)
+            result += facility.format()
             result += "\n"
         
         return result
-
-        
-    
-    def format_facility(self, facility: Facility) -> str:
-        result = ""
-        if facility.code != "" and facility.title != "":
-            result += f"{facility.code}, {facility.title}\n"
-
-        header_1 = 13 # Kód stavebného objektu
-        header_2 = len("Názov stavebného objektu") + 5 # Názov stavebného objektu
-
-        for part in facility.parts:
-            result += f"{part.code:<{header_1}} | {part.title:<{header_2}} \n"
-
-        return result
-
-
-
-
-
