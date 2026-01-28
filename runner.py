@@ -12,7 +12,7 @@ from typing import Callable
 def parse_args():
     """Parses arguments from cmd.
 
-    Args:
+    Params:
         None
     
     Returns:
@@ -40,7 +40,7 @@ def process_dir(source_dir: Path, file_type: str,
                 ) -> tuple[All, Successfull]:
     """Process files in `source_dir` using `scripts.get(file_type)` script.
     
-    Args:
+    Params:
         - `source_dir` (`Path`): Path to directory with files which will be processed using 'script'
         - `file_type` (`str`): type of processed files
         - `scripts` (`dict[FileType, Callable[[], int]]`): collection of all supported scripts
@@ -97,7 +97,7 @@ def process_dir(source_dir: Path, file_type: str,
 def run(script: Callable[[], int], source: Path) -> int:
     """ Runs `script` with data from `source`.
 
-    Args:
+    Params:
         - `source` (`str`): Path to input file with data
         - `data` (`str`): Path to file where data are copied
 
@@ -113,7 +113,7 @@ def run(script: Callable[[], int], source: Path) -> int:
 def main() -> int:
     """Creates a 'DPOs' from files in `data_dir` with chosen file type with associated script.
     
-    Args:
+    Params:
         None
     
     Returns:

@@ -5,7 +5,7 @@ from typing import OrderedDict, Any
 def read_XML(file_name: str) -> OrderedDict[str, Any]:
     """Reads *.xml file and parses data in dictionary
 
-    Args:
+    Params:
         file_name (str): Path leading to *.xml file with input data.
     
     Returns:
