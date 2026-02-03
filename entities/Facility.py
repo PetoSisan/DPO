@@ -1,4 +1,4 @@
-from FacilityPart import FacilityPart
+from entities.FacilityPart import FacilityPart
 
 class Facility:
     """Class representing facility / construction."""

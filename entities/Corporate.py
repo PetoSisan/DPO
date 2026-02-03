@@ -1,6 +1,6 @@
-from Address import Address
-from Person import Person
-from PhysicalPerson import PhysicalPerson
+from entities.Address import Address
+from entities.Person import Person
+from entities.PhysicalPerson import PhysicalPerson
 
 class Corporate(Person):
     """Class representing PO (== právnická osoba == legal entity).

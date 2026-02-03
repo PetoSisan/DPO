@@ -1,4 +1,4 @@
-from Person import Person
+from entities.Person import Person
 
 def add_missing_attrs(person: Person) -> str:
     missing_data = ""

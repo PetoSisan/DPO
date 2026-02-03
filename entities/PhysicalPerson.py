@@ -1,5 +1,5 @@
-from Address import Address
-from Person import Person
+from entities.Address import Address
+from entities.Person import Person
 
 class PhysicalPerson(Person):
     def __init__(self, title: str = "", name: str = "", surname: str = "", address: Address | None = None, phone: str = "", mail: str = ""):
