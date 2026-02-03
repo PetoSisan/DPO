@@ -1,12 +1,19 @@
-from xmlReader import read_XML
-from parser import parse
-from parser import get_project_id
+from processes.xmlReader import read_XML
+from processes.parser import parse
+from processes.parser import get_project_id
 from shutil import copy
 from datetime import datetime
-from filler import fill_doc
-from loger import log
-from Person import Person
-from Project import Project
+from processes.filler import fill_doc
+from processes.loger import log
+from entities.Person import Person
+from entities.Project import Project
+
+from observer.Observer import Observer
+
+from processes.parser import prepare_data
+
+from form.Form import IForm
+from GUI.GUIForm import GUIForm
 
 
 def main() -> int:
@@ -28,10 +35,17 @@ def main() -> int:
         data = read_XML(input_file)
         applicants, project_owners, project = parse(data)
 
+        header_data, data = prepare_data(applicants, project_owners, project)
+
         new_doc = f"{project.id} - DPO ({timestamp}).docx"
         copy(template_name, new_doc)
 
-        fill_doc(new_doc, applicants, project_owners, project, timestamp)
+        observer = Observer(header_data, data)
+        form: IForm = GUIForm({}) # TODO
+        form.register_callback(observer.finish)
+        form.run()
+
+        
     
     except FileNotFoundError as e:
         error = "Súbor sa nenašiel. Prosím skontrolujte, či zadaný súbor existuje v pracovnom adresári." \
@@ -42,13 +56,7 @@ def main() -> int:
     
     success = "úspešne" if error == "" else "neúspešne"
     log_name = f"log_{success}_{timestamp}.txt"
-
-    project_id = "ID stavby nebolo nájdené"
-    if project is not None:
-        project_id = project.id
-    
-    if project is None and data is not None:
-        project_id = get_project_id(data)
+    project_id = get_project_id(data, project)
     
     log(log_name, new_doc, error, applicants, project_owners, project_id)
 
