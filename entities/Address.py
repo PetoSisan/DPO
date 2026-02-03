@@ -1,4 +1,4 @@
-from Entity import Entity
+from entities.Entity import Entity
 
 class Address(Entity):
     """Class representing address of an building in real world."""

@@ -1,5 +1,5 @@
-from Address import Address
-from Facility import Facility
+from entities.Address import Address
+from entities.Facility import Facility
 
 Cadastral_territory = str
 Register = str

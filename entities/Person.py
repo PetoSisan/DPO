@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from Address import Address
-from Entity import Entity
+from entities.Address import Address
+from entities.Entity import Entity
 
 class Person(Entity):
     def __init__(self, name: str = "", address: Address | None = None, phone: str = "", mail: str = ""):

@@ -1,7 +1,7 @@
 from docx import Document
 from docx.shared import RGBColor
-from Person import Person
-from Project import Project
+from entities.Person import Person
+from entities.Project import Project
 
 INCOMPLETE_DATA = "Ostatné údaje nie sú dostupné v žiadosti ani v PD."
 
