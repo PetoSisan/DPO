@@ -16,6 +16,11 @@ I will add a **dummy** `parser.py` in the repo in the future.
 
 These files are **not** added to this repo. I will add these **dummy** files in the repo in the future.
 
+3. As next step, please install dependencies:
+```
+pip install -r requirements.txt
+```
+
 ## Usage
 To run the project, use:
 
