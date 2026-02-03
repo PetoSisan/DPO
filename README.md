@@ -13,6 +13,11 @@ This project helps to automate the filling of binding statement DPO (**Záväzn�
 These files are **not** added to this repo for security reasons.
 The file `parser.py` parsing the structured request data is **not** included too.
 
+3. As next step, please install dependencies:
+```
+pip install -r requirements.txt
+```
+
 ## Usage
 To run the project, use:
 
