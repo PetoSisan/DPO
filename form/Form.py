@@ -13,7 +13,7 @@ class IForm(ABC):
     """
     def __init__(self, qna: dict[Question, list[Answer]]):
         self.qna = qna
-        self.observers: set[dict[Question, list[Answer]]] = set()
+        self.observers: set[Callable[ [dict[Question, list[Answer]], FormState], int ]] = set()
         self.state = FormState.NOT_STARTED
     
 
