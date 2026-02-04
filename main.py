@@ -1,7 +1,7 @@
 from processes.xmlReader import read_XML
 from processes.parser import parse
 from processes.parser import get_project_id
-from shutil import copy
+
 from datetime import datetime
 from processes.filler import fill_doc
 from processes.loger import log
@@ -13,14 +13,14 @@ from observer.Observer import Observer
 from processes.parser import prepare_data
 
 from form.Form import IForm
+from form.form_wanted import form_wanted
 from GUI.GUIForm import GUIForm
 
 
 def main() -> int:
     error = ""
-    
+
     now = datetime.now()
-    # Format it as YYYY-MM-DD_HH-MM
     timestamp = now.strftime("%Y-%m-%d_%H-%M")
 
     applicants: list[Person] | None = None
@@ -30,20 +30,19 @@ def main() -> int:
     data = None
     
     try:
-        template_name = "VZOR - Záväzné vyjadrenie DPO.docx"
+        
         input_file = "šišan.xml" 
         data = read_XML(input_file)
         applicants, project_owners, project = parse(data)
 
-        header_data, data = prepare_data(applicants, project_owners, project)
+        observer = Observer(applicants, project_owners, project, timestamp)
 
-        new_doc = f"{project.id} - DPO ({timestamp}).docx"
-        copy(template_name, new_doc)
+        wanted_form = form_wanted()
 
-        observer = Observer(header_data, data)
-        form: IForm = GUIForm({}) # TODO
-        form.register_callback(observer.finish)
-        form.run()
+        if wanted_form:
+            form: IForm = GUIForm({}) # TODO
+            form.register_callback(observer.finish)
+            form.run()
 
         
     
@@ -54,17 +53,7 @@ def main() -> int:
     except Exception as e:
         error = f"Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n {str(e)} \n"
     
-    success = "úspešne" if error == "" else "neúspešne"
-    log_name = f"log_{success}_{timestamp}.txt"
-    project_id = get_project_id(data, project)
     
-    log(log_name, new_doc, error, applicants, project_owners, project_id)
-
-    print(f"Program prebehol {success}.")
-    if len(error) != 0:
-        print(f"{error} \n")
-
-    print(f"Záznam o priebehu programu je uložený v súbore {log_name}")
     input("Press Enter to exit...")
 
     return 0 if error == "" else 1
