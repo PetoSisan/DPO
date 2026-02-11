@@ -1,8 +1,5 @@
 from docx import Document
 from docx.shared import RGBColor
-from entities.Person import Person
-from entities.Project import Project
-from processes.parser import prepare_data
 
 def fill(row, cell: int, header_data: dict[str, str], data: dict[str, str]) -> None:
     curr_cell = row.cells[cell]
