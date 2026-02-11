@@ -1,6 +1,6 @@
 from entities.Person import Person
 
-def add_missing_attrs(person: Person) -> str:
+def find_missing_attrs(person: Person) -> str:
     missing_data = ""
     missing_attrs = person.get_missing_attrs()
 
@@ -9,14 +9,15 @@ def add_missing_attrs(person: Person) -> str:
 
     return missing_data
 
+def find_missing_data(applicants: list[Person], project_owners: list[Person]) -> str:
+    missing_data = ""
+    for applicant in applicants:
+        missing_data += find_missing_attrs(applicant)
 
-
-# missing_data = ""
-# for applicant in applicants:
-#     missing_data += add_missing_attrs(applicant)
-
-# for project_owner in project_owners:
-#     missing_data += add_missing_attrs(project_owner)
+    for project_owner in project_owners:
+        missing_data += find_missing_attrs(project_owner)
+    
+    return missing_data
 
 
 def log(log_name: str, new_doc_name: str, error: str,
@@ -37,9 +38,9 @@ def log(log_name: str, new_doc_name: str, error: str,
 
 
 def record(error: str, timestamp: str, new_doc_name: str, project_id: str,
-           missing_data: str) -> int:
+           missing_data: str) -> None:
     success = "úspešne" if error == "" else "neúspešne"
-    log_name = f"log_{success}_{timestamp}.txt"
+    log_name = f"DPO-log_{success}_{timestamp}.txt"
     
     log(log_name, new_doc_name, error, project_id, missing_data)
 
