@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 from typing import Callable
 from .FormState import FormState
 
+from collections import deque
+
 Question = str
 Answer = str
 
@@ -13,23 +15,23 @@ class IForm(ABC):
     """
     def __init__(self, qna: dict[Question, list[Answer]]):
         self.qna = qna
-        self.observers: set[Callable[ [dict[Question, list[Answer]], FormState], int ]] = set()
+        self.questions = deque(self.qna.keys())
+        self.observer: Callable[[dict[Question, list[Answer]], FormState], bool] | None = None
         self.state = FormState.NOT_STARTED
     
 
     @abstractmethod
     def run(self) -> None:
         pass
+    
+
+    def add_answers(self, question: str, answers: list[str]) -> None:
+        self.qna[question] = answers
 
 
-    def register_callback(self, f: Callable[ [dict[Question, list[Answer]], FormState], int ]) -> None:
-        self.observers.add(f)
+    def register_callback(self, f: Callable[[dict[Question, list[Answer]], FormState], bool]) -> None:
+        self.observer = f
 
 
-    def call_callback(self, received: dict[Question, list[Answer]]) -> int:
-        errors = 0
-
-        for f in self.observers:
-            errors += f(received, self.state)
-        
-        return errors
+    def call_callback(self) -> bool:
+        return self.observer(self.qna, self.state)
