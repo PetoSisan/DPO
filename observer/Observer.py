@@ -1,8 +1,8 @@
 Question = str
 Answer = str
 
-from ..form.Form import IForm
-from ..form.FormState import FormState
+from form.Form import IForm
+from form.FormState import FormState
 
 from processes.filler import fill_doc
 from processes.loger import record
@@ -19,12 +19,13 @@ from shutil import copy
 
 class Observer:
     def __init__(self, applicants: list[Person], project_owners: list[Person],
-                 project: Project, timestamp: str,
+                 project: Project, timestamp: str, date: str,
                  template_name: str = "VZOR - Záväzné vyjadrenie DPO.docx"):
         self.applicants = applicants
         self.project_owners = project_owners
         self.project = project
         self.timestamp = timestamp
+        self.date = date
         self.template_name = template_name
 
 
@@ -36,7 +37,7 @@ class Observer:
             print("Vypĺňanie formulára bolo prerušené.")
 
         qna = {row_name: str.join(answers) for row_name, answers in qna.items()}
-        header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna)
+        header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna, self.date)
         
         error = ""
         try:
