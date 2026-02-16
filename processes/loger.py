@@ -1,21 +1,21 @@
 from entities.Person import Person
 
-def find_missing_attrs(person: Person) -> str:
+def find_missing_attrs(person: Person, person_role: str) -> str:
     missing_data = ""
     missing_attrs = person.get_missing_attrs()
 
     if len(missing_attrs) != 0:
-        missing_data += f"V žiadosti chýbajú niektoré dáta o osobe \"{person.get_full_name()}\": {missing_attrs} \n"
+        missing_data += f"V žiadosti chýbajú niektoré dáta o osobe \"{person.get_full_name()}\" s rolou '{person_role}': {missing_attrs} \n"
 
     return missing_data
 
 def find_missing_data(applicants: list[Person], project_owners: list[Person]) -> str:
     missing_data = ""
     for applicant in applicants:
-        missing_data += find_missing_attrs(applicant)
+        missing_data += find_missing_attrs(applicant, "Žiadateľ")
 
     for project_owner in project_owners:
-        missing_data += find_missing_attrs(project_owner)
+        missing_data += find_missing_attrs(project_owner, "Stavebník")
     
     return missing_data
 
