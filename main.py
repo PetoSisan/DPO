@@ -23,6 +23,8 @@ def main() -> int:
 
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H-%M")
+    date = now.strftime("%d.%m.%Y")
+    print(date)
 
     applicants: list[Person] = []
     project_owners: list[Person] = []
@@ -37,7 +39,7 @@ def main() -> int:
         new_doc_name = f"{project.id} - DPO ({timestamp}).docx"
         
         form: IForm = GUIForm({}) # TODO
-        observer = Observer(applicants, project_owners, project, form, timestamp)
+        observer = Observer(applicants, project_owners, project, timestamp, date)
         wanted_form = form_wanted()
 
         if wanted_form:
@@ -59,7 +61,7 @@ def main() -> int:
                find_missing_data(applicants, project_owners))
     
     input("Press Enter to exit...")
-    return 0 if error == "" and retcode == 0 else 1
+    return 0
 
 
 if __name__ == "__main__":
