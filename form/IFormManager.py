@@ -16,7 +16,6 @@ class IFormManager(ABC):
     """
     def __init__(self, form: Form):
         self.form = form
-        self.state = FormState.NOT_STARTED
     
 
     @abstractmethod

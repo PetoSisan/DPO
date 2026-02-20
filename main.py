@@ -14,6 +14,7 @@ from entities.Statement import Statement
 from form.IFormManager import IFormManager
 from GUI.GUIFormManager import GUIFormManager
 
+from form.create_questions import create_questions
 
 
 def main() -> int:
@@ -34,12 +35,12 @@ def main() -> int:
         applicants, project_owners, project = parse(data)
         new_doc_name = f"{project.id} - DPO ({timestamp}).docx"
         
-        form: IFormManager = GUIFormManager({}) # TODO
+        form_manager: IFormManager = GUIFormManager(create_questions())
 
-        if form.wanted():
-            form.run()
+        if form_manager.wanted():
+            form_manager.run()
 
-        statement = Statement(applicants, project_owners, project, form.qna, form.state)
+        statement = Statement(applicants, project_owners, project, form_manager.form.qna, form_manager.form.state)
         statement.create()
 
     
