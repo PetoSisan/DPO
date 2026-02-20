@@ -1,4 +1,5 @@
 from entities.Person import Person
+from datetime import datetime
 
 def find_missing_attrs(person: Person, person_role: str) -> str:
     missing_data = ""
@@ -37,8 +38,10 @@ def log(log_name: str, new_doc_name: str, error: str,
 
 
 
-def record(error: str, timestamp: str, new_doc_name: str, project_id: str,
+def record(error: str, date_time: datetime, new_doc_name: str, project_id: str,
            missing_data: str) -> None:
+    
+    timestamp = date_time.strftime("%Y-%m-%d_%H-%M")
     success = "úspešne" if error == "" else "neúspešne"
     log_name = f"DPO-log_{success}_{timestamp}.txt"
     
