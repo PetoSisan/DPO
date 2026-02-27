@@ -35,4 +35,8 @@ class IFormManager(ABC):
     
 
     def add_answers(self, question: str, answers: list[str]) -> None:
-        self.form.qna[question] = answers
+        self.form.add_answers(question, answers)
+
+
+    def next_question(self) -> Question | None:
+        return self.form.next_question()
