@@ -18,8 +18,10 @@ pip install -r requirements.txt
 2. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This exact request (including naming of the `.xml` file) is required by the customer.
 3. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
 
-These files are **not** added to this repo for security reasons.
-The file `parser.py` parsing the structured request data is **not** included too.
+These files are **not** added to this repo.
+
+The file `parser.py` parsing the structured request data is **not** included too. (I am not sure whether the `.xml` structure is confidential or not).
+This mean that newly cloned project will **not** work because it uses functionality written this file. I will add a **dummy** `parser.py` in the future.
 
 ## Usage
 To run the project, use:
@@ -38,5 +40,6 @@ The program creates two new files:
 The project is currently functional (see the `master` branch).
 
 ## Planned work and extensions
+<<<<<<< HEAD
 1. Extension of a GUI (see the `development` branch).
 2. Preparation of full project documentation.
