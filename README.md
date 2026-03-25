@@ -10,8 +10,10 @@ This project helps to automate the filling of binding statement DPO (**Záväzn�
 1. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This exact request (including naming of the `.xml` file) is required by Project owner.
 2. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
 
-These files are **not** added to this repo for security reasons.
-The file `parser.py` parsing the structured request data is **not** included too.
+These files are **not** added to this repo.
+
+The file `parser.py` parsing the structured request data is **not** included too. (I am not sure whether the `.xml` structure is confidential or not).
+This mean that newly cloned project will **not** work because it uses functionality written this file. I will add a **dummy** `parser.py` in the future.
 
 ## Usage
 To run the project, use:
@@ -27,6 +29,8 @@ Program creates two new files:
 
 
 ## Project status
-Project is currently working but there is still a lot space for improvements:
+Project is currently working (or maybe better said see **requirements**)
+
+## Planned extensions
 1. There is still need to **write a documentation**.
-2. There is a possibility to create a GUI extension which needs to be firstly discussed with project owner.
+2. There is a possibility to create a GUI extension which needs to be firstly discussed with project owner. (see `development` branch)
