@@ -5,8 +5,10 @@ This project helps to automate the filling of binding statement DPO (**Záväzn�
 ## Disclaimer
 - Information and error messages are written in Slovak, as this is more convenient for the users of this product.
 - I am **not** affiliated with *Západoslovenská distibučná a.s.* in any way. This project was created for my father, who works there, to help automate part of his workflow.
-- The file `parser.py` parsing the structured request data is **not** included too. (I am not sure whether the `.xml` structure is confidential or not).
-This means that newly cloned project will **not** work because it uses functionality written in this file. I will add a **dummy** `parser.py` in the repo in the future.
+- The file `parser.py` parsing the structured request data from `.xml` file is **not** included. (I am not sure whether the `.xml` structure is confidential or not).
+This means that newly cloned project will **not** work because it uses functionality written in this file.
+
+I will add a **dummy** `parser.py` in the repo in the future.
 
 
 ## Requirements
