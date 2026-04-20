@@ -1,6 +1,6 @@
 # Functional requirements
 
-# General
+## General
 1. The whole UI will be written in **Slovak**.
 2. The system will offer a processing of the multiple `.xml` files from a **chosen directory** in one execution of the program.
 
