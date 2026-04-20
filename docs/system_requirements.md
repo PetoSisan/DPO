@@ -20,7 +20,7 @@
 2. The system will **log** execution of the program to `log_{success}_{time_stamp}.txt` file indicating **success** / **fail** of the program.
 
 ## Sending as a attachment
-1. The technician will have a possibibity to send generated statement via mail as attachment to his **supervisor** for a **review**. (Low priority perhaps in the later stage of the project)
+1. The technician will have a possibibity to send generated statement via mail as attachment to his **supervisor** for a **review**. (Low priority -  perhaps in the later stage of the project)
 
 
 # Nonfunctional requirements
