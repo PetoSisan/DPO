@@ -7,9 +7,9 @@ left to right direction
 
 rectangle "DPO" as DPO {
     usecase "Create a binding statement" as createStatement
-    usecase "Filling the form in the GUI" as gui
+    usecase "Filling out the form in the GUI" as gui
     usecase "Prompt whether to open the GUI" as prompt
-    usecase "Create more binding statements" as createStatements
+    usecase "Create more binding statements at once" as createStatements
     usecase "Send statement" as send
 }
 
