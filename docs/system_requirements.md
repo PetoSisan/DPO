@@ -2,7 +2,7 @@
 
 # General
 1. The whole UI will be written in **Slovak**.
-2. The system will offer process the multiple `.xml` files from a **chosen directory** in one execution of the program.
+2. The system will offer a processing of the multiple `.xml` files from a **chosen directory** in one execution of the program.
 
 ## Extracting data
 1. The system will extract relevant project data from a file `šišan.xml`.
@@ -16,11 +16,12 @@
 
 
 ## Output
-1. The system will create `{Project.id} - DPO ({timestamp}).docx` (generated DPO binding statement) based on the template `VZOR - Záväzné vyjadrenie DPO.docx` from extracted data form `xml` file and data obtained from the technician if the form was not skipped.
+1. The system will create `{Project.id} - DPO ({timestamp}).docx` (generated DPO binding statement) based on the template `VZOR - Záväzné vyjadrenie DPO.docx` from a hoarded data (`.xml` file + form if it was not skipped).
 2. The system will **log** execution of the program to `log_{success}_{time_stamp}.txt` file indicating **success** / **fail** of the program.
 
 ## Sending as a attachment
-1. The technician will have a possibibity to send generated statement via mail as attachment to his **supervisor** for a **review**. (Low priority -  perhaps in the later stage of the project)
+1. The technician will have a possibibity to send generated statement via mail as a attachment to his **supervisor** for a **review**. 
+This requirement has a low priority - perhaps in the later stage of the project.
 
 
 # Nonfunctional requirements
