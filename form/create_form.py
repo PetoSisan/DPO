@@ -2,7 +2,7 @@ from form.Question import Question
 from form.Form import Form
 
 
-def create_questions() -> Form:
+def create_form() -> Form:
     answers = {
         """Stavbu nemožno pripojiť k distribučnej sústave, pretože
         stavba nie je elektroenergetickým zariadením ani odberným elektrickým zariadením""": None,
