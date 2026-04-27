@@ -5,9 +5,10 @@ Answer = str
 
 class Form:
     def __init__(self, start: Question):
-        self.current: Question | None = start
-        self.qna: dict[str, list[Answer]] = {}
+        self.questions: list[Question | None] = [start]
+        self.answers: dict[str, list[Answer]] = {}
         self.state = FormState.NOT_STARTED
+        self.current = 0
     
 
     def add_answers(self, answers: list[str]) -> None:
