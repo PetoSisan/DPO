@@ -10,3 +10,7 @@ class Question:
 
     def next(self, answer: str) -> Question | None:
         return self.answers.get(answer)
+    
+    def are_equivalent_answers(self, old_answers: list[str], new_answers: list[str]) -> bool:
+        return len(old_answers) != 0 and len(new_answers) != 0 and \
+               self.next(old_answers[0]) == self.next(new_answers[0])
