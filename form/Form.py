@@ -10,8 +10,8 @@ class Form:
         self.state = FormState.NOT_STARTED
     
 
-    def add_answers(self, question: str, answers: list[str]) -> None:
-        self.qna[question] = answers
+    def add_answers(self, answers: list[str]) -> None:
+        self.qna[self.current.row_name] = answers
 
 
     def get_current_question(self) -> Question | None:
