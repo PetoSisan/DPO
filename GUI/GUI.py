@@ -22,7 +22,7 @@ class GUI():
 
     def run(self, form: Form):
         self.app = QApplication([])
-        self.window = Window(form.get_current_question, form.add_answers)
+        self.window = Window(form.get_current_question, form.add_answers, self.quit)
         self.window.show()
         self.app.exec()
     
