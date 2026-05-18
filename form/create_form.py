@@ -1,4 +1,4 @@
-from form.Question import Question
+from form.SingleChoiceQuestion import SingleChoiceQuestion
 from form.Form import Form
 
 
@@ -20,7 +20,7 @@ def create_form() -> Form:
         na základe ktorej bude zabezpečená kapacita v distribučnej sústave.""": None  
     }
 
-    question = Question("Stavbu nemožno pripojiť k distribučnej sústave, pretože",
+    question = SingleChoiceQuestion("Stavbu nemožno pripojiť k distribučnej sústave, pretože",
                        "Možnosti pripojenia k distribučnej sústave", answers)
     
     answers = {
@@ -32,7 +32,7 @@ def create_form() -> Form:
         "Stavbu nemožno pripojiť k distribučnej sústave, pretože ...": question
     }
     
-    question = Question("Možnosti pripojenia k distribučnej sústave",
+    question = SingleChoiceQuestion("Možnosti pripojenia k distribučnej sústave",
                  "Možnosti pripojenia k distribučnej sústave", answers)
     
     answers = {
@@ -45,7 +45,7 @@ def create_form() -> Form:
         "Predčasné užívanie stavby": question
     }
 
-    question = Question("Typ konania pred stavebným úradom",
+    question = SingleChoiceQuestion("Typ konania pred stavebným úradom",
                  "Typ konania pred stavebným úradom", answers)
     
     answers = {
@@ -68,7 +68,7 @@ def create_form() -> Form:
  
     }
 
-    justification = Question("Odôvodnenie nesúhlasu", "Záver", answers)
+    justification = SingleChoiceQuestion("Odôvodnenie nesúhlasu", "Záver", answers)
 
     answers = {
         "súhlas s posudzovanou dokumentáciou": question,
@@ -76,6 +76,6 @@ def create_form() -> Form:
         "nesúhlas s posudzovanou dokumentáciou": justification
     }
 
-    question = Question("Záver k posudzovanej dokumentácií", "Záver", answers)
+    question = SingleChoiceQuestion("Záver k posudzovanej dokumentácií", "Záver", answers)
 
     return Form(question)
