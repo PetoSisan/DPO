@@ -6,24 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1154</width>
-    <height>901</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Formulár DPO</string>
+  </property>
+  <property name="locale">
+   <locale language="Slovak" country="Slovakia"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>120</y>
-      <width>601</width>
-      <height>571</height>
+      <x>660</x>
+      <y>240</y>
+      <width>600</width>
+      <height>600</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="Start">
+    <widget class="QPushButton" name="start">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -36,7 +39,7 @@
       <string>Štart</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="Quit">
+    <widget class="QPushButton" name="quit">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -91,7 +94,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1154</width>
+     <width>1920</width>
      <height>24</height>
     </rect>
    </property>
