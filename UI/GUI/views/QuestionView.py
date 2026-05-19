@@ -6,7 +6,7 @@ from typing import Callable
 from form.Question import Question
 
 class QuestionView(View):
-    def __init__(self, q: Question, send_answers: Callable[[list[str]], None]):
-        super().__init__("start.ui")
+    def __init__(self, design_file: str, q: Question, send_answers: Callable[[list[str]], None]):
+        super().__init__(design_file)
         self.question = q
         self.send_answers = send_answers
