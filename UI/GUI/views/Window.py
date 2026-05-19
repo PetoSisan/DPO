@@ -4,6 +4,8 @@ from UI.GUI.views.View import View
 from UI.GUI.views.StartView import StartView
 from UI.GUI.views.QuestionView import QuestionView
 from UI.GUI.views.SummaryView import SummaryView
+from UI.GUI.views.SingleChoiceQuestionView import SingleChoiceQuestionView
+from UI.GUI.views.MultipleChoiceQuestionView import MultipleChoiceQuestionView
 
 from typing import Callable
 
@@ -11,6 +13,9 @@ from form.Question import Question
 from form.FormState import FormState
 
 from UI.GUI.Messenger import Messenger
+
+from form.SingleChoiceQuestion import SingleChoiceQuestion
+from form.MultipleChoiceQuestion import MultipleChoiceQuestion
 
 class Window(QWidget):
     def __init__(self, messenger: Messenger):
@@ -21,14 +26,18 @@ class Window(QWidget):
         self.resize(1920, 1080)
 
         self.stack = QStackedWidget()
-        start = StartView()
+        start = StartView(self.new_view, messenger.quit_callback)
         self.redirect(start)
 
         layout = QVBoxLayout(self)
         layout.addWidget(self.stack)
+    
 
     def create_question_view(self, question: Question) -> QuestionView:  
-        pass
+        if isinstance(question, SingleChoiceQuestion):
+            return SingleChoiceQuestionView(question, self.messenger.add_answers)
+        
+        return MultipleChoiceQuestionView(question, self.messenger.add_answers)
 
     def new_view(self) -> None:
         q: Question | None = self.messenger.get_question()
