@@ -35,10 +35,10 @@ def main() -> int:
         new_doc_name = f"{project.id} - DPO ({timestamp}).docx"
         
         form = create_form()
-        gui = GUI(form)
+        gui = GUI()
 
         if gui.wanted():
-            gui.run()
+            gui.run(form)
 
         statement = Statement(applicants, project_owners, project, form)
         statement.create()
