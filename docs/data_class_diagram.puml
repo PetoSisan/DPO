@@ -86,7 +86,6 @@ class SingleChoiceQuestion {
 
 }
 
-
 Entity <|-- Address
 Entity <|-- Person
 Person <|-- PhysicalPerson
@@ -94,8 +93,8 @@ Person <|-- Corporate
 Question <|-- SingleChoiceQuestion
 Question <|-- MultipleChoiceQuestion
 
-
-Person "0..n" o--> "1" Address : "has"
+Facility "1" *--> "0..n" FacilityPart : "consists of"
+Address "0..n" <--o "1" Person  : "has"
 Project "1" *--> "0..n" Facility : "consists of"
 
 
@@ -108,6 +107,5 @@ Form "1" o--> "1" Question : "current"
 Form "0..n" o--> "1" FormState : "has"
 
 Question "1..n" o--> "0..n" Question : "leads"
-
 
 @enduml
