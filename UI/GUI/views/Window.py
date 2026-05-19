@@ -8,14 +8,12 @@ from typing import Callable
 
 from form.Question import Question
 
+from UI.GUI.Messenger import Messenger
+
 class Window(QWidget):
-    def __init__(self, get_question: Callable[[], Question | None],
-                 send_answers: Callable[[list[str]], None],
-                 submit: Callable[[], None]):
+    def __init__(self, messenger: Messenger):
         super().__init__()
-        self.get_question = get_question
-        self.send_answers = send_answers
-        self.submit = submit
+        self.messenger = messenger
 
         self.setWindowTitle("Fomulár k DPO")
         self.resize(1920, 1080)
@@ -31,12 +29,13 @@ class Window(QWidget):
         pass
 
     def create_question_view(self, question: Question) -> None:  
-        view = QuestionView(question)
+        pass
 
-    def new_view(self) -> Question | None:
-        q: Question | None =  self.get_question()
+    def new_view(self) -> None:
+        q: Question | None = self.messenger.get_question()
         if q is not None:
             self.create_question_view(q)
+        pass
     
 
 
