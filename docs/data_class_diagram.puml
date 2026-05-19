@@ -111,4 +111,27 @@ Form "0..n" o--> "1" FormState : "has"
 
 Question "1..n" o--> "0..n" Question : "leads"
 
+Entity <|-- Address
+Entity <|-- Person
+Person <|-- PhysicalPerson
+Person <|-- Corporate
+Question <|-- SingleChoiceQuestion
+Question <|-- MultipleChoiceQuestion
+
+
+Person "0..n" o--> "1" Address : "has"
+Project "1" *--> "0..n" Facility : "consists of"
+
+
+Statement "0..n" o--> "1..n" Person : "applicants"
+Statement "0..n" o--> "1..n" Person : "project owners"
+Statement "1..n" o--> "1" Project : "express an opinion to"
+Statement "1" o--> "1" Form : "has"
+
+Form "1" o--> "1" Question : "current"
+Form "0..n" o--> "1" FormState : "has"
+
+Question "1..n" o--> "0..n" Question : "leads"
+
+
 @enduml
