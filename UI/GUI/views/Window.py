@@ -3,10 +3,12 @@ from PySide6.QtWidgets import QWidget, QStackedWidget, QVBoxLayout
 from UI.GUI.views.View import View
 from UI.GUI.views.StartView import StartView
 from UI.GUI.views.QuestionView import QuestionView
+from UI.GUI.views.SummaryView import SummaryView
 
 from typing import Callable
 
 from form.Question import Question
+from form.FormState import FormState
 
 from UI.GUI.Messenger import Messenger
 
@@ -19,30 +21,27 @@ class Window(QWidget):
         self.resize(1920, 1080)
 
         self.stack = QStackedWidget()
-        self.stack.addWidget(StartView())
+        start = StartView()
+        self.redirect(start)
 
         layout = QVBoxLayout(self)
         layout.addWidget(self.stack)
 
-
-    def connect(self) -> None:
-        pass
-
-    def create_question_view(self, question: Question) -> None:  
+    def create_question_view(self, question: Question) -> QuestionView:  
         pass
 
     def new_view(self) -> None:
         q: Question | None = self.messenger.get_question()
         if q is not None:
-            self.create_question_view(q)
-        pass
-    
+            view = self.create_question_view(q)
+            self.redirect(view)
+        else:
+            view = SummaryView(self.messenger.form.qna)
+            self.redirect(view)
+        
+        return
 
-
-    def redirect(self, old: View | None, new: View, msg: str= "") -> None:   
-        if old is not None:
-            self.stack.removeWidget(old)
-
+    def redirect(self, new: View, msg: str= "") -> None:
         self.stack.addWidget(new)
         self.stack.setCurrentWidget(new)
 
