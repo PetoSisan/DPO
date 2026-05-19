@@ -1,0 +1,108 @@
+@startuml GUI design class diagram
+class Form {
+    + qna : dict[str, list[str]]
+    + get_question() : Question | None
+    + add_answers(answers: list[str]) : None
+    + next_question(answers: list[str]) : None
+}
+
+enum FormState {
+    + NOT_STARTED
+    + IN_PROGRESS
+    + DONE
+    + ABORTED
+}
+
+class MultipleChoiceQuestion {
+
+}
+
+class Question {
+    + title : str
+    + row_name : str
+    + next(answer: str) : Question | None
+    + are_equivalent_answers(answers: list[str]) : bool
+}
+
+class SingleChoiceQuestion {
+
+}
+
+class UI {
+    + wanted() : bool
+    + {abstract} run() : None
+    + {abstract} quit() : None
+}
+
+class GUI {
+}
+
+class Window {
+    + stack : QStackedWidget
+    + create_question_view(q: Question) : QuestionView
+    + new_view() : None
+    + redirect(new: View) : None
+}
+
+class Messenger {
+    + new_view : Callable[[], None]
+    + quit_callback : Callable[[], None]
+    + get_question() : Question | None
+    + add_answers(answers: list[str]) : None
+    + quit() : None
+    + register_callback(new_view: Callable[[], None]) : None
+}
+
+class View {
+    + ui : QWidget
+    + load_ui(design_file: str) : None
+    + error(msg: str) : None
+    + success(msg: str) : None
+}
+
+class StartView {
+    
+}
+
+class SummaryView {
+    + qna : dict[str, list[str]]
+}
+
+class QuestionView {
+    + question : Question
+    + send_answers : Callable[[list[str]], None]
+}
+
+class SingleChoiceQuestionView {
+   
+}
+
+
+class MultipleChoiceQuestionChoiceView {
+   
+}
+
+UI <|-- GUI
+Question <|-- SingleChoiceQuestion
+Question <|-- MultipleChoiceQuestion
+
+View <|-- StartView
+View <|-- SummaryView
+View <|-- QuestionView
+QuestionView <|-- SingleChoiceQuestionView
+QuestionView <|-- MultipleChoiceQuestionChoiceView
+
+Form "1" o--> "1" Question : "current"
+Form "0..n" o--> "1" FormState : "has"
+
+GUI --> Messenger : "creates"
+GUI --> Window : "creates"
+Window --> View : "creates"
+QuestionView --> Messenger : "sends answers"
+
+Messenger "1" o--> "Form" : "has"
+Window "1" o--> "1" Messenger : "has"
+
+Question "1..n" o--> "0..n" Question : "leads"
+
+@enduml
