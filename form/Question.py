@@ -12,7 +12,16 @@ class Question(ABC):
 
     def next(self, answer: str) -> Question | None:
         return self.answers.get(answer)
+
     
-    def are_equivalent_answers(self, old_answers: list[str], new_answers: list[str]) -> bool:
-        return len(old_answers) != 0 and len(new_answers) != 0 and \
-               self.next(old_answers[0]) == self.next(new_answers[0])
+    def are_equivalent_answers(self, answers: list[str]) -> bool:
+        if len(answers) == 0:
+            return True
+
+        next = self.next(answers[0])
+
+        for i in range(1, len(answers)):
+            if next != self.next(answers[i]):
+                return False
+        
+        return True
