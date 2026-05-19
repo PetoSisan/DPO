@@ -17,6 +17,11 @@ class Form:
     def get_current_question(self) -> Question | None:
         return self.current
     
+    def set_current_question(self, q: Question) -> None:
+        self.current = q
+
+    def set_state(self, state: FormState) -> None:
+        self.state = state
 
     def next_question(self, answers: list[str]) -> None:
         assert len(answers) > 0 and self.current.are_equivalent_answers(answers)
