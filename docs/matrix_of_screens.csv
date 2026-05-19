@@ -1,0 +1,6 @@
+﻿;StartView;SingleChoiceQuestionView;MultipleChoiceQuestionView;SummaryView
+Form.qna;;M;M;D
+Form.current;;DM;DM;
+Question.title;;D;D;
+Question.answers;;D;D;
+Project.id;D;;;
