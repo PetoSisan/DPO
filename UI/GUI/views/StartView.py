@@ -1,4 +1,4 @@
-from GUI.views.View import View
+from UI.GUI.views.View import View
 
 class StartView(View):
     def __init__(self):
