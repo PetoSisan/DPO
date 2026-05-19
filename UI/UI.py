@@ -9,7 +9,7 @@ Question = str
 Answer = str
 
 
-class IUI(ABC):
+class UI(ABC):
     """Interface (although it probably is not an interface in the true sense
        of the word because of implementing one method)
        for receiving data from a dialog with user.
