@@ -17,6 +17,8 @@ from UI.GUI.Messenger import Messenger
 from form.SingleChoiceQuestion import SingleChoiceQuestion
 from form.MultipleChoiceQuestion import MultipleChoiceQuestion
 
+from UI.GUI.Messenger import Messenger
+
 class Window(QWidget):
     def __init__(self, messenger: Messenger):
         super().__init__()

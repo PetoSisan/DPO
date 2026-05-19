@@ -32,4 +32,4 @@ class Messenger:
 
     def quit(self, state: FormState) -> None:
         self.form.set_state(state)
-        return self.quit_callback()    
+        return self.quit_callback()
