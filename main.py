@@ -11,7 +11,7 @@ from entities.Project import Project
 
 from entities.Statement import Statement
 
-from GUI.GUI import GUI
+from UI.GUI.GUI import GUI
 
 from form.create_form import create_form
 
@@ -35,10 +35,10 @@ def main() -> int:
         new_doc_name = f"{project.id} - DPO ({timestamp}).docx"
         
         form = create_form()
-        gui = GUI()
+        gui = GUI(form)
 
         if gui.wanted():
-            gui.run(form)
+            gui.run()
 
         statement = Statement(applicants, project_owners, project, form)
         statement.create()
