@@ -18,7 +18,7 @@ class Form:
         return self.current
     
 
-    def next_question(self, answers: list[str]) -> Question | None:
+    def next_question(self, answers: list[str]) -> None:
         assert len(answers) > 0 and self.current.are_equivalent_answers(answers)
         self.current = self.current.next(answers[0])
         return self.current
