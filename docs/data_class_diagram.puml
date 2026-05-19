@@ -1,4 +1,4 @@
-@startuml Design class diagram
+@startuml Data design class diagram
 
 class Address {
     + street : str
@@ -62,6 +62,9 @@ class Statement {
 
 class Form {
     + qna : dict[str, list[str]]
+    + get_question() : Question | None
+    + add_answers(answers: list[str]) : None
+    + next_question(answers: list[str]) : None
 }
 
 enum FormState {
