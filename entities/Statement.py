@@ -7,6 +7,7 @@ from datetime import datetime
 Question = str
 Answer = str
 
+from form.Form import Form
 from form.FormState import FormState
 
 from processes.parser import prepare_data
@@ -17,14 +18,13 @@ from shutil import copy
 
 class Statement:
     def __init__(self, applicants: list[Person], project_owners: list[Person],
-                 project: Project, qna: dict[Question, list[Answer]],
-                 form_state: FormState, date_time: datetime = datetime.now(),
+                 project: Project,
+                 form: Form, date_time: datetime = datetime.now(),
                  template_name: str = "VZOR - Záväzné vyjadrenie DPO.docx"):
         self.applicants = applicants
         self.project_owners = project_owners
         self.project = project
-        self.qna = qna
-        self.form_state = form_state
+        self.form = form
         self.date_time = date_time
 
         self.template_name = template_name
@@ -34,10 +34,10 @@ class Statement:
         timestamp = self.date_time.strftime("%Y-%m-%d_%H-%M")
         new_doc_name = f"{self.project.id} - DPO ({timestamp}).docx"
 
-        if self.form_state == FormState.ABORTED:
+        if self.form.state == FormState.ABORTED:
             print("Vypĺňanie formulára bolo prerušené.")
 
-        qna = {row_name: str.join(answers) for row_name, answers in self.qna.items()}
+        qna = {row_name: str.join(answers) for row_name, answers in self.form.qna.items()}
         header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna, self.date_time)
         
         copy(self.template_name, new_doc_name)

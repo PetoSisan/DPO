@@ -40,7 +40,7 @@ def main() -> int:
         if gui.wanted():
             gui.run(form)
 
-        statement = Statement(applicants, project_owners, project, form.qna, form.state)
+        statement = Statement(applicants, project_owners, project, form)
         statement.create()
 
     
