@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import QApplication
 
 from form.Form import Form
-from UI.UI import IUI
+from UI.UI import UI
 from UI.GUI.views.Window import Window
 
-class GUI(IUI):
+class GUI(UI):
     def __init__(self, form: Form):
         super.__init__(form)
         return
