@@ -12,7 +12,7 @@ class Messenger:
     def get_question(self) -> Question | None:
         return self.form.get_current_question()
     
-    def add_answers(self, answers: list[str]):
+    def add_answers(self, answers: list[str]) -> None:
         self.form.add_answers(answers)
         self.form.next_question(answers)
         self.new_view()
