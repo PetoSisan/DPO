@@ -6,7 +6,7 @@ from typing import Callable
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QMessageBox
 from PySide6.QtCore import QFile, Qt
 from PySide6.QtUiTools import QUiLoader
-from GUI.style import base
+from UI.GUI.style import base
 
 from form.Question import Question
 
