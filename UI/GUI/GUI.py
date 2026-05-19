@@ -4,16 +4,21 @@ from form.Form import Form
 from UI.UI import UI
 from UI.GUI.views.Window import Window
 
+from UI.GUI.Messenger import Messenger
+
 class GUI(UI):
-    def __init__(self, form: Form):
-        super.__init__(form)
+    def __init__(self):
         return
 
 
-    def run(self):
+    def run(self, form: Form):
+        messenger = Messenger(form, self.quit)
+
         self.app = QApplication([])
-        self.window = Window(self.form.get_current_question, self.form.add_answers, self.quit)
-        self.window.show()
+        window = Window(messenger)
+        messenger.register_callback(window.new_view)
+
+        window.show()
         self.app.exec()
     
 

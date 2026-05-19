@@ -14,8 +14,8 @@ class UI(ABC):
        of the word because of implementing one method)
        for receiving data from a dialog with user.
     """
-    def __init__(self, form: Form):
-        self.form = form
+    def __init__(self):
+        return
     
     def wanted(self) -> bool:
         """Checks whether user wants to fill the form.
@@ -29,7 +29,7 @@ class UI(ABC):
         return True if answer.lower() == "ano" else False
 
     @abstractmethod
-    def run(self) -> None:
+    def run(self, form: Form) -> None:
         pass
 
     @abstractmethod
