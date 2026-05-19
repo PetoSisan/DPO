@@ -1,0 +1,80 @@
+@startuml
+
+class Address {
+    + street : str
+    + building_number : str
+    + postal_code : int
+    + city : str
+    + county : str
+    + country : str
+}
+
+class Corporate {
+    + ICO : int
+}
+
+class Entity {
+    + required : set[str]
+    + get_missing_attrs() : list[Any]
+    + format_attribute(name: str, value: int | str) : str
+    + is_complete() : bool
+    + is_missing(attr: Any) : bool
+}
+
+class Facility {
+    + code : str
+    + title : str
+    + construction_class : str
+    + format() : str
+}
+
+class FacilityPart {
+    + code : str
+    + title : str
+}
+
+class Person {
+    + name : str
+    + phone : str
+    + mail : str
+    + {abstract} get_full_name() : str
+    + {abstract} to_string() : str
+}
+
+class PhysicalPerson {
+    + title : str
+    + surname : str
+}
+
+class Project {
+    + id : str
+    + title : str
+    + construction_parcels : dict[str, dict[str, str]]
+    + format_facilities() : str
+}
+
+
+class Statement {
+    + qna : dict[str, list[str]]
+    + date_time: datetime
+    + template_name : str
+    + create() : None
+}
+
+Statement "0..n" o--> "1..n" Person : "applicants"
+Statement "0..n" o--> "1..n" Person : "project owners"
+Statement "1..n" o--> "1" Project : "express an opinion to"
+
+enum class FormState {
+    + NOT_STARTED
+    + IN_PROGRESS
+    + DONE
+    + ABORTED
+}
+
+class Form {
+    
+}
+
+
+@enduml
