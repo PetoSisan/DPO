@@ -18,7 +18,8 @@ class Form:
         return self.current
     
 
-    def next_question(self) -> Question | None:
-        self.current = self.current.next()
+    def next_question(self, answers: list[str]) -> Question | None:
+        assert len(answers) > 0
+        self.current = self.current.next(answers[0])
         return self.current
     
