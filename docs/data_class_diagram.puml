@@ -1,4 +1,4 @@
-@startuml
+@startuml Design class diagram
 
 class Address {
     + street : str
@@ -55,26 +55,59 @@ class Project {
 
 
 class Statement {
-    + qna : dict[str, list[str]]
     + date_time: datetime
     + template_name : str
     + create() : None
 }
 
-Statement "0..n" o--> "1..n" Person : "applicants"
-Statement "0..n" o--> "1..n" Person : "project owners"
-Statement "1..n" o--> "1" Project : "express an opinion to"
+class Form {
+    + qna : dict[str, list[str]]
+}
 
-enum class FormState {
+enum FormState {
     + NOT_STARTED
     + IN_PROGRESS
     + DONE
     + ABORTED
 }
 
-class Form {
-    
+class MultipleChoiceQuestion {
+
 }
+
+class Question {
+    + title : str
+    + row_name : str
+    + next(answer: str) : Question | None
+    + are_equivalent_answers(answers: list[str]) : bool
+}
+
+class SingleChoiceQuestion {
+
+}
+
+
+Entity <|-- Address
+Entity <|-- Person
+Person <|-- PhysicalPerson
+Person <|-- Corporate
+Question <|-- SingleChoiceQuestion
+Question <|-- MultipleChoiceQuestion
+
+
+Person "0..n" o--> "1" Address : "has"
+Project "1" *--> "0..n" Facility : "consists of"
+
+
+Statement "0..n" o--> "1..n" Person : "applicants"
+Statement "0..n" o--> "1..n" Person : "project owners"
+Statement "1..n" o--> "1" Project : "express an opinion to"
+Statement "1" o--> "1" Form : "has"
+
+Form "1" o--> "1" Question : "current"
+Form "0..n" o--> "1" FormState : "has"
+
+Question "1..n" o--> "0..n" Question : "leads"
 
 
 @enduml
