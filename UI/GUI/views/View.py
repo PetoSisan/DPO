@@ -14,7 +14,6 @@ class View(QWidget):
     def __init__(self, design_file: str, parent: QWidget | None = None):
         super().__init__(parent)
         self.load_ui(design_file)
-        self.error_label = None
         self.resize(1920, 1080)
 
 
