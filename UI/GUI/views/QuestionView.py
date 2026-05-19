@@ -1,6 +1,6 @@
 from form import Question
 
-from GUI.views.View import View
+from UI.GUI.views.View import View
 from typing import Callable
 
 from form.Question import Question

@@ -1,28 +1,18 @@
 from PySide6.QtWidgets import QApplication
 
 from form.Form import Form
+from UI.UI import IUI
+from UI.GUI.views.Window import Window
 
-from GUI.views.Window import Window
-
-class GUI():
-    def __init__(self):
+class GUI(IUI):
+    def __init__(self, form: Form):
+        super.__init__(form)
         return
-    
-    def wanted(self) -> bool:
-        """Checks whether user wants to fill the form.
-        Params:
-        
-        Returns:
-            `True`, if yes, `False` otherwise
-        """
-
-        answer: str = input("Prajete si vypĺňať 'Vyjadrenie' k žiadosti DPO? [ano/nie] \n")
-        return True if answer.lower() == "ano" else False
 
 
-    def run(self, form: Form):
+    def run(self):
         self.app = QApplication([])
-        self.window = Window(form.get_current_question, form.add_answers, self.quit)
+        self.window = Window(self.form.get_current_question, self.form.add_answers, self.quit)
         self.window.show()
         self.app.exec()
     

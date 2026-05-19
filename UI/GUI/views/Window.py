@@ -1,8 +1,8 @@
 from PySide6.QtWidgets import QWidget, QStackedWidget, QVBoxLayout
 
-from GUI.views.View import View
-from GUI.views.StartView import StartView
-from GUI.views.QuestionView import QuestionView
+from UI.GUI.views.View import View
+from UI.GUI.views.StartView import StartView
+from UI.GUI.views.QuestionView import QuestionView
 
 from typing import Callable
 
