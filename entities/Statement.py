@@ -31,8 +31,7 @@ class Statement:
 
 
     def create(self) -> None:
-        timestamp = self.date_time.strftime("%Y-%m-%d_%H-%M")
-        new_doc_name = f"{self.project.id} - DPO ({timestamp}).docx"
+        new_doc_name = f"{self.project.id} - DPO.docx"
 
         if self.form.state == FormState.ABORTED:
             print("Vypĺňanie formulára bolo prerušené.")
