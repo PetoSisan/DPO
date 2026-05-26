@@ -16,7 +16,7 @@ from UI.GUI.GUI import GUI
 from form.create_form import create_form
 
 
-def main() -> int:
+def DPO(input_file: str) -> int:
     error = ""
 
     now = datetime.now()
@@ -28,11 +28,10 @@ def main() -> int:
     new_doc_name = ""
     data = None
     
-    try:
-        input_file = "šišan.xml" 
+    try: 
         data = read_XML(input_file)
         applicants, project_owners, project = parse(data)
-        new_doc_name = f"{project.id} - DPO ({timestamp}).docx"
+        new_doc_name = f"{project.id} - DPO.docx"
         
         form = create_form()
         gui = GUI()
@@ -58,6 +57,9 @@ def main() -> int:
     input("Press Enter to exit...")
     return 0 if error == "" else 1
 
+
+def main() -> int:
+    return DPO("šišan.xml")
 
 if __name__ == "__main__":
     main()
