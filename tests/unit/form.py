@@ -115,7 +115,6 @@ def create_form_test() -> None:
         assert q.row_name == row_name
 
         for answer in expected_answers[i]:
-            print(answer)
             assert answer in q.answers.keys()
 
         form.add_answers(answers[i])
