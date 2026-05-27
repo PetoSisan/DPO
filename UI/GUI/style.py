@@ -3,13 +3,18 @@ def base() -> str:
         QWidget {
             background-color: white;
             color: black;
-            font-family: DejaVu Sans;
-            font-size: 12 px;
+            font-family: Ubuntu;
+            font-size: 20 px;
         }
 
         QLabel {
-            font-size: 16 px;
-            font-family: DejaVu Sans;
+            font-size: 30 px;
+            font-family: Ubuntu;
+        }
+
+        QRadioButton {
+            font-size: 20 px;
+            font-family: Ubuntu;
         }
 
         QPushButton {
