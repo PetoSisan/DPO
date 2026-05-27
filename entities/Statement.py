@@ -36,7 +36,7 @@ class Statement:
         if self.form.state == FormState.ABORTED:
             print("Vypĺňanie formulára bolo prerušené.")
 
-        qna = {row_name: str.join(answers) for row_name, answers in self.form.qna.items()}
+        qna = {row_name: ''.join(answers) for row_name, answers in self.form.qna.items()}
         header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna, self.date_time)
         
         copy(self.template_name, new_doc_name)
