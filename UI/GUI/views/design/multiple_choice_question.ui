@@ -19,10 +19,10 @@
   <widget class="QWidget" name="question_widget" native="true">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>240</y>
-     <width>600</width>
-     <height>600</height>
+     <x>510</x>
+     <y>90</y>
+     <width>900</width>
+     <height>900</height>
     </rect>
    </property>
    <property name="locale">
@@ -33,7 +33,7 @@
      <rect>
       <x>200</x>
       <y>70</y>
-      <width>200</width>
+      <width>500</width>
       <height>91</height>
      </rect>
     </property>
@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="next">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>490</y>
+      <x>680</x>
+      <y>800</y>
       <width>181</width>
       <height>61</height>
      </rect>
@@ -66,8 +66,8 @@
    <widget class="QPushButton" name="prev">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>490</y>
+      <x>40</x>
+      <y>800</y>
       <width>171</width>
       <height>61</height>
      </rect>
@@ -79,10 +79,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>50</x>
       <y>180</y>
-      <width>341</width>
-      <height>201</height>
+      <width>801</width>
+      <height>591</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
