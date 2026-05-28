@@ -25,7 +25,7 @@
      <height>600</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="start">
+   <widget class="QPushButton" name="submit">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -38,7 +38,7 @@
      <string>Potvdiť</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="quit">
+   <widget class="QPushButton" name="prev">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -91,7 +91,7 @@ p, li { white-space: pre-wrap; }
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="quit_2">
+   <widget class="QPushButton" name="quit">
     <property name="geometry">
      <rect>
       <x>260</x>
