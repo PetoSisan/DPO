@@ -26,7 +26,7 @@ class Window(QWidget):
         self.resize(1920, 1080)
 
         self.stack = QStackedWidget()
-        start = StartView(self.new_view, messenger.quit_callback)
+        start = StartView(self.new_view, messenger.quit)
         self.redirect(start)
 
         layout = QVBoxLayout(self)

@@ -2,6 +2,8 @@ from typing import Callable
 from form.Question import Question
 from form.Form import Form
 
+from form.FormState import FormState
+
 class Messenger:
     def __init__(self, form: Form, quit: Callable[[], None],
                  new_view: Callable[[], None] | None = None):
@@ -17,7 +19,8 @@ class Messenger:
         self.form.next_question(answers)
         self.new_view()
 
-    def quit(self) -> None:
+    def quit(self, state: FormState) -> None:
+        self.form.set_state(state)
         return self.quit_callback()
     
     def register_callback(self, new_view: Callable[[], None]) -> None:
