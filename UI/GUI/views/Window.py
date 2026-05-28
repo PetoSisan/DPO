@@ -42,12 +42,11 @@ class Window(QWidget):
     def new_view(self) -> None:
         q: Question | None = self.messenger.get_question()
         if q is not None:
-            view = self.create_question_view(q)
-            self.redirect(view)
+            view = self.create_question_view(q)            
         else:
-            view = SummaryView(self.messenger.form.qna)
-            self.redirect(view)
-        
+            view = SummaryView(self.messenger.summary(), self.messenger.quit)
+
+        self.redirect(view)
         return
 
     def redirect(self, new: View, msg: str= "") -> None:

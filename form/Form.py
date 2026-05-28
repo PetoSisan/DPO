@@ -23,6 +23,10 @@ class Form:
     def set_state(self, state: FormState) -> None:
         self.state = state
 
+
+    def get_qna(self) -> dict[str, list[Answer]]:
+        return self.qna
+
     def next_question(self, answers: list[str]) -> None:
         assert len(answers) > 0 and self.current.are_equivalent_answers(answers)
         self.current = self.current.next(answers[0])
