@@ -21,7 +21,6 @@ class Messenger:
         self.form.next_question(answers)
         self.new_view()
 
-
     def register_callback(self, new_view: Callable[[], None]) -> None:
         self.new_view = new_view
 
