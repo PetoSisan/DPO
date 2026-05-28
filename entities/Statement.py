@@ -34,7 +34,8 @@ class Statement:
         new_doc_name = f"{self.project.id} - DPO.docx"
 
         if self.form.state == FormState.ABORTED:
-            print("Vypĺňanie formulára bolo prerušené.")
+            print("Upozornenie: Vypĺňanie formulára bolo prerušené.")
+            print("Dáta vytiahnuté z formulára môžu byť tým pádom nekompletné.")
 
         qna = {row_name: ''.join(answers) for row_name, answers in self.form.qna.items()}
         header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna, self.date_time)
