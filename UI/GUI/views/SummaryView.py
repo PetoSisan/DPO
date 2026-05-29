@@ -9,6 +9,7 @@ class SummaryView(View):
         self.qna = qna
         self.ui.quit.clicked.connect(lambda: quit(FormState.ABORTED))
         self.ui.submit.clicked.connect(lambda: quit(FormState.DONE))
+        self.ui.prev.hide()
         self.load_summary()
 
     def format_summary(self) -> str:

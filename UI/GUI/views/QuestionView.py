@@ -14,6 +14,7 @@ class QuestionView(View):
         self.callback = callback
         self.setup()
         self.ui.next.clicked.connect(self.send_answers)
+        self.ui.prev.hide()
 
 
     def setup(self) -> None:
