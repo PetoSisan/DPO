@@ -54,6 +54,8 @@ def DPO_OK_test() -> None:
 def DPO_NOK_test() -> None:
     path = Path("šišan.xml")
     exists = path.exists()
+    success = True
+
     if exists:
         temp = make_temp(path)
 
@@ -74,13 +76,14 @@ def DPO_NOK_test() -> None:
             assert any(f"Vyhodená chyba:" in line for line in f)
     
     except AssertionError as e:
+        print(e)
+        success = False
+
+    finally:
         if exists:
             clean_temp(temp)
-        print(e)
-        assert False
-    
-    if exists:
-        clean_temp(temp)
+        if not success:
+            assert False
 
 
 def cleanup() -> None:
