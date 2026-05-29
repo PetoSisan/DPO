@@ -5,7 +5,7 @@ This project helps to automate the filling of binding statement DPO (**Záväzn�
 ## Disclaimer
 - Information and error messages are written in Slovak, as this is more convenient for the users of this product.
 - I am **not** affiliated with *Západoslovenská distibučná a.s.* in any way. This project was created for my father, who works there, to help automate part of his workflow.
-- The file `parser.py` parsing the structured request data from `.xml` file is serves just as dummy file The actual implementation is hidden. I am not sure whether the `.xml` structure is confidential or not.
+- The file `parser.py` parsing the structured request data from `.xml` file is serves just as dummy file. The actual implementation is hidden. I am not sure whether the `.xml` structure is confidential or not.
 
 
 ## Requirements
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 2. The `.xml` file named `šišan.xml` is required as a structuted request data which are then parsed. This exact request (including naming of the `.xml` file) is required by the customer.
 3. The file `VZOR - Záväzné vyjadrenie DPO.docx` serves as a **template** from which program generates binding statements.
 
-There are dummy templates of these files in `master`. The actual template of `VZOR - Záväzné vyjadrenie DPO.docx` is **not** included. 
+These files are just dummy templates in the `master` branch. The actual template of `VZOR - Záväzné vyjadrenie DPO.docx` is **not** included. 
 
 ## Usage
 To run the project, use:
