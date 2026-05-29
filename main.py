@@ -16,7 +16,7 @@ from UI.GUI.GUI import GUI
 from form.create_form import create_form
 
 
-def DPO(input_file: str) -> int:
+def DPO() -> int:
     error = ""
 
     now = datetime.now()
@@ -27,6 +27,8 @@ def DPO(input_file: str) -> int:
     project: Project = None
     new_doc_name = ""
     data = None
+
+    input_file = "šišan.xml" 
     
     try: 
         data = read_XML(input_file)
@@ -59,7 +61,7 @@ def DPO(input_file: str) -> int:
 
 
 def main() -> int:
-    return DPO("šišan.xml")
+    return DPO()
 
 if __name__ == "__main__":
     main()
