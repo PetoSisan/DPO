@@ -37,7 +37,7 @@ def DPO(input_file: str) -> int:
         gui = GUI()
 
         if gui.wanted():
-            gui.run(form)
+            gui.run(form, project.id)
 
         statement = Statement(applicants, project_owners, project, form)
         statement.create()

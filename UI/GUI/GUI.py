@@ -11,11 +11,11 @@ class GUI(UI):
         return
 
 
-    def run(self, form: Form):
+    def run(self, form: Form, project_id: str):
         messenger = Messenger(form, self.quit)
 
         self.app = QApplication([])
-        window = Window(messenger)
+        window = Window(messenger, project_id)
         messenger.register_callback(window.new_view)
 
         window.show()

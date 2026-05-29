@@ -29,7 +29,7 @@ class UI(ABC):
         return True if answer.lower() == "ano" else False
 
     @abstractmethod
-    def run(self, form: Form) -> None:
+    def run(self, form: Form, project_id: str) -> None:
         pass
 
     @abstractmethod

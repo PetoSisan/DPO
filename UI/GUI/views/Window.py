@@ -20,7 +20,7 @@ from form.MultipleChoiceQuestion import MultipleChoiceQuestion
 from UI.GUI.Messenger import Messenger
 
 class Window(QWidget):
-    def __init__(self, messenger: Messenger):
+    def __init__(self, messenger: Messenger, project_id: str):
         super().__init__()
         self.messenger = messenger
 
@@ -28,7 +28,7 @@ class Window(QWidget):
         self.resize(1920, 1080)
 
         self.stack = QStackedWidget()
-        start = StartView(self.new_view, messenger.quit)
+        start = StartView(project_id, self.new_view, messenger.quit)
         self.redirect(start)
 
         layout = QVBoxLayout(self)

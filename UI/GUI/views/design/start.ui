@@ -71,7 +71,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ak si prajete pokračovať, kliknite na &amp;quot;&lt;span style=&quot; font-weight:600;&quot;&gt;Štart&lt;/span&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="title">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -81,7 +81,7 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <property name="text">
-      <string>Vyjadrenie k žiadosti DPO pre projekt s ID: [...]</string>
+      <string>Vyjadrenie k žiadosti DPO pre projekt s ID:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
