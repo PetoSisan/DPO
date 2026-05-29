@@ -1,6 +1,5 @@
 *.docx
 __pycache__
-*.xml
 parser.py
 XML
 *.exe
