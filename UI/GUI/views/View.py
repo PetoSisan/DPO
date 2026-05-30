@@ -1,14 +1,10 @@
 import os
 from pathlib import Path
 
-from typing import Callable
-
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QMessageBox
-from PySide6.QtCore import QFile, Qt
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QMessageBox
+from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 from UI.GUI.style import base
-
-from form.Question import Question
 
 
 class View(QWidget):

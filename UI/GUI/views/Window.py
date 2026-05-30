@@ -7,15 +7,9 @@ from UI.GUI.views.SummaryView import SummaryView
 from UI.GUI.views.SingleChoiceQuestionView import SingleChoiceQuestionView
 from UI.GUI.views.MultipleChoiceQuestionView import MultipleChoiceQuestionView
 
-from typing import Callable
-
 from form.Question import Question
-from form.FormState import FormState
-
-from UI.GUI.Messenger import Messenger
 
 from form.SingleChoiceQuestion import SingleChoiceQuestion
-from form.MultipleChoiceQuestion import MultipleChoiceQuestion
 
 from UI.GUI.Messenger import Messenger
 

@@ -5,7 +5,6 @@ from datetime import datetime
 from entities.Person import Person
 from entities.Address import Address
 from entities.PhysicalPerson import PhysicalPerson
-from entities.Corporate import Corporate
 
 from entities.Project import Project
 from entities.Facility import Facility

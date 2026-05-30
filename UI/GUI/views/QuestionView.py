@@ -1,5 +1,3 @@
-from form import Question
-
 from UI.GUI.views.View import View
 from typing import Callable
 

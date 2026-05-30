@@ -3,10 +3,6 @@ from entities.Project import Project
 
 from datetime import datetime
 
-
-Question = str
-Answer = str
-
 from form.Form import Form
 from form.FormState import FormState
 
@@ -14,6 +10,11 @@ from processes.parser import prepare_data
 from processes.filler import fill_doc
 
 from shutil import copy
+
+
+Question = str
+Answer = str
+
 
 
 class Statement:

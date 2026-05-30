@@ -3,7 +3,6 @@ from shutil import move
 from datetime import datetime
 import argparse
 import os
-from sys import exit
 
 from main import main as xml_script
 from typing import Callable

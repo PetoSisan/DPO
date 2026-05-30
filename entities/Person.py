@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 from entities.Address import Address
 from entities.Entity import Entity

@@ -20,7 +20,6 @@ def DPO() -> int:
     error = ""
 
     now = datetime.now()
-    timestamp = now.strftime("%Y-%m-%d_%H-%M")
 
     applicants: list[Person] = []
     project_owners: list[Person] = []

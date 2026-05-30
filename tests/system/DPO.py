@@ -79,10 +79,10 @@ def DPO_NOK_test() -> None:
 
         with open(log, "r") as f:
             assert any(
-                f"Záznam o priebehu spracovaní žiadosti stavby s ID" in line
+                "Záznam o priebehu spracovaní žiadosti stavby s ID" in line
                 for line in f
             )
-            assert any(f"Vyhodená chyba:" in line for line in f)
+            assert any("Vyhodená chyba:" in line for line in f)
 
     except AssertionError as e:
         print(e)
