@@ -38,7 +38,7 @@ def log(
             f.write(missing_data)
 
         f.write(
-            f'Program prebehol úspešne. Výstup môžete nájsť v súbore "{new_doc_name}". \n\n'
+            f'Program prebehol úspešne. Výstup môžete nájsť v súbore "{new_doc_name}". \n'
         )
 
 
