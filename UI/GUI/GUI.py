@@ -6,10 +6,10 @@ from UI.GUI.views.Window import Window
 
 from UI.GUI.Messenger import Messenger
 
+
 class GUI(UI):
     def __init__(self):
         return
-
 
     def run(self, form: Form, project_id: str):
         messenger = Messenger(form, self.quit)
@@ -20,7 +20,6 @@ class GUI(UI):
 
         window.show()
         self.app.exec()
-    
 
     def quit(self) -> None:
         self.app.quit()

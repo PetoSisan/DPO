@@ -7,6 +7,7 @@ from shutil import copy
 from tempfile import NamedTemporaryFile
 from pathlib import Path
 
+
 def make_temp(path: Path) -> Path:
     original_file = Path(path)
 
@@ -23,7 +24,6 @@ def clean_temp(temp_path: Path) -> None:
     original_file = Path("šišan.xml")
     copy(temp_path, original_file)
     unlink(temp_path)
-
 
 
 DPO_FILE_PATTERN = "[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9] - DPO.docx"
@@ -44,11 +44,17 @@ def DPO_OK_test() -> None:
     assert len(files) == 1
 
     file = files[0]
-    project_id = file.split(' ')[0]
+    project_id = file.split(" ")[0]
 
     with open(log, "r") as f:
-        assert any(f"Záznam o priebehu spracovaní žiadosti stavby s ID \"{project_id}\":" in line for line in f)
-        assert any(f"Program prebehol úspešne. Výstup môžete nájsť v súbore \"{file}\"." in line for line in f)
+        assert any(
+            f'Záznam o priebehu spracovaní žiadosti stavby s ID "{project_id}":' in line
+            for line in f
+        )
+        assert any(
+            f'Program prebehol úspešne. Výstup môžete nájsť v súbore "{file}".' in line
+            for line in f
+        )
 
 
 def DPO_NOK_test() -> None:
@@ -72,9 +78,12 @@ def DPO_NOK_test() -> None:
         assert len(files) == 0
 
         with open(log, "r") as f:
-            assert any(f"Záznam o priebehu spracovaní žiadosti stavby s ID" in line for line in f)
+            assert any(
+                f"Záznam o priebehu spracovaní žiadosti stavby s ID" in line
+                for line in f
+            )
             assert any(f"Vyhodená chyba:" in line for line in f)
-    
+
     except AssertionError as e:
         print(e)
         success = False

@@ -17,10 +17,15 @@ from shutil import copy
 
 
 class Statement:
-    def __init__(self, applicants: list[Person], project_owners: list[Person],
-                 project: Project,
-                 form: Form, date_time: datetime = datetime.now(),
-                 template_name: str = "VZOR - Záväzné vyjadrenie DPO.docx"):
+    def __init__(
+        self,
+        applicants: list[Person],
+        project_owners: list[Person],
+        project: Project,
+        form: Form,
+        date_time: datetime = datetime.now(),
+        template_name: str = "VZOR - Záväzné vyjadrenie DPO.docx",
+    ):
         self.applicants = applicants
         self.project_owners = project_owners
         self.project = project
@@ -29,7 +34,6 @@ class Statement:
 
         self.template_name = template_name
 
-
     def create(self) -> None:
         new_doc_name = f"{self.project.id} - DPO.docx"
 
@@ -37,9 +41,13 @@ class Statement:
             print("Upozornenie: Vypĺňanie formulára bolo prerušené.")
             print("Dáta vytiahnuté z formulára môžu byť tým pádom nekompletné.")
 
-        qna = {row_name: ''.join(answers) for row_name, answers in self.form.qna.items()}
-        header_data, data = prepare_data(self.applicants, self.project_owners, self.project, qna, self.date_time)
-        
+        qna = {
+            row_name: "".join(answers) for row_name, answers in self.form.qna.items()
+        }
+        header_data, data = prepare_data(
+            self.applicants, self.project_owners, self.project, qna, self.date_time
+        )
+
         copy(self.template_name, new_doc_name)
         fill_doc(new_doc_name, header_data, data, self.date_time)
 

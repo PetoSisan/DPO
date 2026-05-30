@@ -10,30 +10,26 @@ from UI.GUI.style import base
 
 from form.Question import Question
 
+
 class View(QWidget):
     def __init__(self, design_file: str, parent: QWidget | None = None):
         super().__init__(parent)
         self.load_ui(design_file)
-        #self.setStyleSheet(base())
+        # self.setStyleSheet(base())
         self.resize(1920, 1080)
-
 
     def load_ui(self, design_file: str):
         loader = QUiLoader()
-        path = os.fspath(Path(__file__).resolve().parent / "design" /  design_file)
+        path = os.fspath(Path(__file__).resolve().parent / "design" / design_file)
         ui_file = QFile(path)
         ui_file.open(QFile.ReadOnly)
         self.ui = loader.load(ui_file)
         ui_file.close()
         layout = QVBoxLayout(self)
         layout.addWidget(self.ui)
-        
 
     def error(self, msg: str, title: str = "❌ Error") -> None:
         QMessageBox.warning(self, title, msg)
 
-
-    def success(self,msg: str, title: str = "✅ Success") -> None:
+    def success(self, msg: str, title: str = "✅ Success") -> None:
         QMessageBox.information(self, title, msg)
-
-        

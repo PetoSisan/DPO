@@ -11,21 +11,24 @@ Answer = str
 
 class UI(ABC):
     """Interface (although it probably is not an interface in the true sense
-       of the word because of implementing one method)
-       for receiving data from a dialog with user.
+    of the word because of implementing one method)
+    for receiving data from a dialog with user.
     """
+
     def __init__(self):
         return
-    
+
     def wanted(self) -> bool:
         """Checks whether user wants to fill the form.
         Params:
-        
+
         Returns:
             `True`, if yes, `False` otherwise
         """
 
-        answer: str = input("Prajete si vypĺňať 'Vyjadrenie' k žiadosti DPO? [ano/nie] \n")
+        answer: str = input(
+            "Prajete si vypĺňať 'Vyjadrenie' k žiadosti DPO? [ano/nie] \n"
+        )
         return True if answer.lower() == "ano" else False
 
     @abstractmethod

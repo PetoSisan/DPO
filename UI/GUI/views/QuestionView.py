@@ -7,8 +7,11 @@ from form.Question import Question
 
 from abc import abstractmethod
 
+
 class QuestionView(View):
-    def __init__(self, design_file: str, q: Question, callback: Callable[[list[str]], None]):
+    def __init__(
+        self, design_file: str, q: Question, callback: Callable[[list[str]], None]
+    ):
         super().__init__(design_file)
         self.question = q
         self.callback = callback
@@ -16,13 +19,12 @@ class QuestionView(View):
         self.ui.next.clicked.connect(self.send_answers)
         self.ui.prev.hide()
 
-
     def setup(self) -> None:
         self.ui.question.setText(self.question.title)
 
-        self.clear_placeholders()  
+        self.clear_placeholders()
         self.load_answers()
-            
+
     def clear_placeholders(self) -> None:
         while self.ui.gridLayout.count():
             item = self.ui.gridLayout.takeAt(0)
@@ -30,7 +32,6 @@ class QuestionView(View):
             widget = item.widget()
             if widget:
                 widget.deleteLater()
-        
 
     def send_answers(self) -> None:
         answers: list[str] = self.collect_answers()
@@ -38,7 +39,7 @@ class QuestionView(View):
         if len(answers) == 0:
             self.error("Nezadali ste žiadnu odpoveď.")
             return
-        
+
         self.callback(answers)
 
     @abstractmethod
@@ -52,5 +53,5 @@ class QuestionView(View):
             widget = self.ui.gridLayout.itemAt(i).widget()
             if widget and widget.isChecked():
                 answers.append(widget.text())
-        
+
         return answers

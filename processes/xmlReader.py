@@ -7,7 +7,7 @@ def read_XML(file_name: str) -> OrderedDict[str, Any]:
 
     Params:
         file_name (str): Path leading to *.xml file with input data.
-    
+
     Returns:
         OrderedDict: Required data in dictionary
     """
@@ -15,5 +15,5 @@ def read_XML(file_name: str) -> OrderedDict[str, Any]:
 
     with open(file_name, "r", encoding="utf-8") as f:
         data = xmltodict.parse(f.read())
-    
+
     return data

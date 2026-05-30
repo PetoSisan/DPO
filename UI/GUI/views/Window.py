@@ -19,6 +19,7 @@ from form.MultipleChoiceQuestion import MultipleChoiceQuestion
 
 from UI.GUI.Messenger import Messenger
 
+
 class Window(QWidget):
     def __init__(self, messenger: Messenger, project_id: str):
         super().__init__()
@@ -33,25 +34,24 @@ class Window(QWidget):
 
         layout = QVBoxLayout(self)
         layout.addWidget(self.stack)
-    
 
-    def create_question_view(self, question: Question) -> QuestionView:  
+    def create_question_view(self, question: Question) -> QuestionView:
         if isinstance(question, SingleChoiceQuestion):
             return SingleChoiceQuestionView(question, self.messenger.add_answers)
-        
+
         return MultipleChoiceQuestionView(question, self.messenger.add_answers)
 
     def new_view(self) -> None:
         q: Question | None = self.messenger.get_question()
         if q is not None:
-            view = self.create_question_view(q)            
+            view = self.create_question_view(q)
         else:
             view = SummaryView(self.messenger.summary(), self.messenger.quit)
 
         self.redirect(view)
         return
 
-    def redirect(self, new: View, msg: str= "") -> None:
+    def redirect(self, new: View, msg: str = "") -> None:
         self.stack.addWidget(new)
         self.stack.setCurrentWidget(new)
 
