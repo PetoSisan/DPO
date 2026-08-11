@@ -1,17 +1,14 @@
-from PySide6.QtWidgets import QWidget, QStackedWidget, QVBoxLayout
-
-from UI.GUI.views.View import View
-from UI.GUI.views.StartView import StartView
-from UI.GUI.views.QuestionView import QuestionView
-from UI.GUI.views.SummaryView import SummaryView
-from UI.GUI.views.SingleChoiceQuestionView import SingleChoiceQuestionView
-from UI.GUI.views.MultipleChoiceQuestionView import MultipleChoiceQuestionView
+from PySide6.QtWidgets import QStackedWidget, QVBoxLayout, QWidget
 
 from form.Question import Question
-
 from form.SingleChoiceQuestion import SingleChoiceQuestion
-
 from UI.GUI.Messenger import Messenger
+from UI.GUI.views.MultipleChoiceQuestionView import MultipleChoiceQuestionView
+from UI.GUI.views.QuestionView import QuestionView
+from UI.GUI.views.SingleChoiceQuestionView import SingleChoiceQuestionView
+from UI.GUI.views.StartView import StartView
+from UI.GUI.views.SummaryView import SummaryView
+from UI.GUI.views.View import View
 
 
 class Window(QWidget):
@@ -43,7 +40,6 @@ class Window(QWidget):
             view = SummaryView(self.messenger.summary(), self.messenger.quit)
 
         self.redirect(view)
-        return
 
     def redirect(self, new: View, msg: str = "") -> None:
         self.stack.addWidget(new)

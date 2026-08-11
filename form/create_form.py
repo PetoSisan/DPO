@@ -1,5 +1,5 @@
-from form.SingleChoiceQuestion import SingleChoiceQuestion
 from form.Form import Form
+from form.SingleChoiceQuestion import SingleChoiceQuestion
 
 
 def create_form() -> Form:

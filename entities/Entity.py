@@ -28,8 +28,9 @@ class Entity(ABC):
         return attrs
 
     def format_attribute(self, name: str, value: int | str | None) -> str:
-        """Formats attribute in following format: '`name`: `value`' if attribute
-        has some meaningfull value (`value is not None and value != ""`)
+        """Formats attribute in following format: '`name`: `value`' if
+        attribute has some meaningfull value (`value is not None
+        and value != ""`)
 
         Params:
             - self (`Entity`)

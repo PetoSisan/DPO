@@ -1,19 +1,13 @@
-from processes.xmlReader import read_XML
-from processes.parser import parse
-from processes.parser import get_project_id
-from processes.loger import record
-from processes.loger import find_missing_data
-
 from datetime import datetime
 
 from entities.Person import Person
 from entities.Project import Project
-
 from entities.Statement import Statement
-
-from UI.GUI.GUI import GUI
-
 from form.create_form import create_form
+from processes.loger import find_missing_data, record
+from processes.parser import get_project_id, parse
+from processes.xmlReader import read_XML
+from UI.GUI.GUI import GUI
 
 
 def DPO() -> int:
@@ -46,11 +40,11 @@ def DPO() -> int:
     except FileNotFoundError as e:
         error = (
             "Súbor sa nenašiel. Prosím skontrolujte, či zadaný súbor existuje v pracovnom adresári."
-            f" Vyhodená chyba: \n {str(e)} \n"
+            f" Vyhodená chyba: \n {e!s} \n"
         )
 
     except Exception as e:
-        error = f"Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n {str(e)} \n"
+        error = f"Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n {e!s} \n"
 
     record(
         error,

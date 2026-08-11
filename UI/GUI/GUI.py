@@ -1,10 +1,9 @@
 from PySide6.QtWidgets import QApplication
 
 from form.Form import Form
-from UI.UI import UI
-from UI.GUI.views.Window import Window
-
 from UI.GUI.Messenger import Messenger
+from UI.GUI.views.Window import Window
+from UI.UI import UI
 
 
 class GUI(UI):

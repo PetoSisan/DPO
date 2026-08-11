@@ -20,7 +20,8 @@ class Address(Entity):
         self.county = county
         self.country = country
 
-        self.required = self.__dict__.keys() - {"required", "county", "country"}
+        optional_params = {"required", "county", "country"}
+        self.required = self.__dict__.keys() - optional_params
 
     def to_string(self) -> str:
         """Returns string representation of an `Address` object.

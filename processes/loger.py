@@ -1,5 +1,6 @@
-from entities.Person import Person
 from datetime import datetime
+
+from entities.Person import Person
 
 
 def find_missing_attrs(person: Person, person_role: str) -> str:

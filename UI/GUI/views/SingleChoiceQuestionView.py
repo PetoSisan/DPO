@@ -1,9 +1,9 @@
-from UI.GUI.views.QuestionView import QuestionView
-from form.Question import Question
-
-from typing import Callable
+from collections.abc import Callable
 
 from PySide6.QtWidgets import QRadioButton
+
+from form.Question import Question
+from UI.GUI.views.QuestionView import QuestionView
 
 
 class SingleChoiceQuestionView(QuestionView):

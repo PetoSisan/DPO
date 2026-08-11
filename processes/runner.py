@@ -1,11 +1,11 @@
-from pathlib import Path
-from shutil import move
-from datetime import datetime
 import argparse
 import os
+from collections.abc import Callable
+from datetime import datetime
+from pathlib import Path
+from shutil import move
 
 from main import main as xml_script
-from typing import Callable
 
 
 def parse_args():
@@ -146,17 +146,17 @@ def main() -> int:
         files_count, successfull = process_dir(data_dir, "xml", SCRIPTS)
 
     except ValueError as e:
-        print(f"Pri spracovávaní priečinku {str(data_dir)} vznikla táto chyba: ")
+        print(f"Pri spracovávaní priečinku {data_dir!s} vznikla táto chyba: ")
         print(str(e))
         return 1
 
     except Exception as e:
         print("Pri behu programu vznikla neočakávaná chyba :(. ")
-        print(f"Vyhodená chyba: \n {str(e)}")
+        print(f"Vyhodená chyba: \n {e!s}")
         return 2
 
     print(
-        f'Program úspešne spracoval z priečinka "{str(data_dir)}" {successfull} z {files_count} súborov.'
+        f'Program úspešne spracoval z priečinka "{data_dir!s}" {successfull} z {files_count} súborov.'
     )
     input("Press Enter to exit...")
 

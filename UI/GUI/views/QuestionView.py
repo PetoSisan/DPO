@@ -1,9 +1,8 @@
-from UI.GUI.views.View import View
-from typing import Callable
+from abc import abstractmethod
+from collections.abc import Callable
 
 from form.Question import Question
-
-from abc import abstractmethod
+from UI.GUI.views.View import View
 
 
 class QuestionView(View):

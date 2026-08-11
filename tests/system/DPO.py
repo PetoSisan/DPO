@@ -1,11 +1,10 @@
-from main import DPO
 from glob import glob
-
 from os import unlink
-
+from pathlib import Path
 from shutil import copy
 from tempfile import NamedTemporaryFile
-from pathlib import Path
+
+from main import DPO
 
 
 def make_temp(path: Path) -> Path:

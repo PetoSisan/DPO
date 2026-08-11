@@ -1,21 +1,20 @@
-from typing import OrderedDict, Any
-
+from collections import OrderedDict
 from datetime import datetime
+from typing import Any
 
-from entities.Person import Person
 from entities.Address import Address
-from entities.PhysicalPerson import PhysicalPerson
-
-from entities.Project import Project
 from entities.Facility import Facility
 from entities.FacilityPart import FacilityPart
+from entities.Person import Person
+from entities.PhysicalPerson import PhysicalPerson
+from entities.Project import Project
 
 Applicant = Person  # žiadateľ
 ProjectOwner = Person  # stavebník
 
 
 def parse(
-    data: OrderedDict[str, Any]
+    data: OrderedDict[str, Any],
 ) -> tuple[list[Applicant], list[ProjectOwner], Project]:
     """This is just a dummy parser. The actual implementation is hidden. See `README.md` for more info"""
     address = Address("Stromova", "42", "12345", "Kholinar", "Central", "Alethkar")
@@ -76,7 +75,6 @@ def prepare_applicants(
 
         if not applicant.is_complete():
             data["Žiadateľ"] += f"\n{INCOMPLETE_DATA}\n"
-    return
 
 
 def prepare_project_owners(project_owners: list[Person], data: dict[str, str]) -> None:
@@ -94,7 +92,6 @@ def prepare_project(project: Project, data: dict[str, str]) -> None:
     data["Názov stavby"] = project.title
     data["Identifikačné údaje stavby"] = project.format_parcels()
     data["Členenie stavby"] = project.format_facilities()
-    return
 
 
 def prepare_data(

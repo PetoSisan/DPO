@@ -1,17 +1,15 @@
 import os
 from pathlib import Path
 
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QMessageBox
 from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
-from UI.GUI.style import base
+from PySide6.QtWidgets import QMessageBox, QVBoxLayout, QWidget
 
 
 class View(QWidget):
     def __init__(self, design_file: str, parent: QWidget | None = None):
         super().__init__(parent)
         self.load_ui(design_file)
-        # self.setStyleSheet(base())
         self.resize(1920, 1080)
 
     def load_ui(self, design_file: str):

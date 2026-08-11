@@ -1,7 +1,7 @@
-from UI.GUI.views.View import View
+from collections.abc import Callable
 
-from typing import Callable
 from form.FormState import FormState
+from UI.GUI.views.View import View
 
 
 class SummaryView(View):

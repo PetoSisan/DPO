@@ -1,9 +1,9 @@
-from UI.GUI.views.QuestionView import QuestionView
-from form.Question import Question
-
-from typing import Callable
+from collections.abc import Callable
 
 from PySide6.QtWidgets import QCheckBox
+
+from form.Question import Question
+from UI.GUI.views.QuestionView import QuestionView
 
 
 class MultipleChoiceQuestionView(QuestionView):

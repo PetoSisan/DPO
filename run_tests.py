@@ -1,7 +1,5 @@
+from tests.system.DPO import DPO_NOK_test, DPO_OK_test, cleanup
 from tests.unit.form import create_form_test
-from tests.system.DPO import DPO_OK_test
-from tests.system.DPO import DPO_NOK_test
-from tests.system.DPO import cleanup
 
 
 def main() -> None:

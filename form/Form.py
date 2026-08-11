@@ -1,5 +1,5 @@
-from form.Question import Question
 from form.FormState import FormState
+from form.Question import Question
 
 Answer = str
 

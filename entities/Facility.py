@@ -29,8 +29,8 @@ class Facility:
         if self.code != "" and self.title != "":
             result += f"{self.code}, {self.title}\n"
 
-        header_1 = 13  # Kód stavebného objektu
-        header_2 = len("Názov stavebného objektu") + 5  # Názov stavebného objektu
+        header_1 = 13
+        header_2 = len("Názov stavebného objektu") + 5
 
         for part in self.parts:
             result += f"{part.code:<{header_1}} | {part.title:<{header_2}} \n"

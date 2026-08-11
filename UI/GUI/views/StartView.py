@@ -1,8 +1,7 @@
-from UI.GUI.views.View import View
-
-from typing import Callable
+from collections.abc import Callable
 
 from form.FormState import FormState
+from UI.GUI.views.View import View
 
 
 class StartView(View):

@@ -1,5 +1,7 @@
+from collections import OrderedDict
+from typing import Any
+
 import xmltodict
-from typing import OrderedDict, Any
 
 
 def read_XML(file_name: str) -> OrderedDict[str, Any]:

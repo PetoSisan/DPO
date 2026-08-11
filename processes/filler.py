@@ -1,7 +1,7 @@
+from datetime import datetime
+
 from docx import Document
 from docx.shared import RGBColor
-
-from datetime import datetime
 
 
 def fill(row, cell: int, header_data: dict[str, str], data: dict[str, str]) -> None:
@@ -15,7 +15,6 @@ def fill(row, cell: int, header_data: dict[str, str], data: dict[str, str]) -> N
         next_cell = row.cells[cell + 1]
         next_cell.text = data[text]
 
-    return
 
 
 def fill_doc(

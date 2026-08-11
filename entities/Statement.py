@@ -1,20 +1,15 @@
-from entities.Person import Person
-from entities.Project import Project
-
 from datetime import datetime
-
-from form.Form import Form
-from form.FormState import FormState
-
-from processes.parser import prepare_data
-from processes.filler import fill_doc
-
 from shutil import copy
 
+from entities.Person import Person
+from entities.Project import Project
+from form.Form import Form
+from form.FormState import FormState
+from processes.filler import fill_doc
+from processes.parser import prepare_data
 
 Question = str
 Answer = str
-
 
 
 class Statement:
@@ -40,7 +35,7 @@ class Statement:
 
         if self.form.state == FormState.ABORTED:
             print("Upozornenie: Vypĺňanie formulára bolo prerušené.")
-            print("Dáta vytiahnuté z formulára môžu byť tým pádom nekompletné.")
+            print("Dáta vytiahnuté z formulára môžu byť nekompletné.")
 
         qna = {
             row_name: "".join(answers) for row_name, answers in self.form.qna.items()
@@ -52,4 +47,3 @@ class Statement:
         copy(self.template_name, new_doc_name)
         fill_doc(new_doc_name, header_data, data, self.date_time)
 
-        return

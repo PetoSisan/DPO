@@ -5,7 +5,8 @@ from entities.PhysicalPerson import PhysicalPerson
 
 class Corporate(Person):
     """Class representing PO (== právnická osoba == legal entity).
-    Yeah I know, that corporates are not the only type of legal entities. I will fix it later."""
+    Yeah I know, that corporates are not the only type of legal entities.
+    I will fix it later."""
 
     def __init__(
         self,
@@ -48,6 +49,6 @@ class Corporate(Person):
 {self.format_attribute("IČO", self.ICO)}
 {self.format_attribute("Tel. číslo", self.phone)}
 {self.format_attribute("Email", self.mail)}
-        
+
 Identifikačné údaje oprávnenej osoby:
     {person}"""

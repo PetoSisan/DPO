@@ -1,8 +1,8 @@
-from typing import Callable
-from form.Question import Question
-from form.Form import Form
+from collections.abc import Callable
 
+from form.Form import Form
 from form.FormState import FormState
+from form.Question import Question
 
 
 class Messenger:
