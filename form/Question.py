@@ -6,7 +6,12 @@ from abc import ABC
 
 
 class Question(ABC):
-    def __init__(self, title: str, row_name: str, answers: dict[str, Question | None]):
+    def __init__(
+        self,
+        title: str,
+        row_name: str,
+        answers: dict[str, Question | None]
+    ):
         self.title = title
         self.row_name = row_name
         self.answers = answers

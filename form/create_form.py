@@ -5,7 +5,9 @@ from form.SingleChoiceQuestion import SingleChoiceQuestion
 def create_form() -> Form:
     answers = {
         "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
-        "stavba nie je elektroenergetickým zariadením ani odberným elektrickým zariadením\n": None,
+        "stavba nie je elektroenergetickým zariadením "
+        "ani odberným elektrickým zariadením\n": None,
+
         "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
         "v dosahu miesta stavby sa nenachádza distribučná sústava,\n"
         "alebo sa nenachádza distribučná sústava v dostatočnej kapacite\n"
@@ -15,10 +17,14 @@ def create_form() -> Form:
         "o pripojení do distribučnej sústavy,\n"
         "na základe ktorej bude dohodnuté rozšírenie distribučnej sústavy\n"
         "a zabezpečená kapacita v distribučnej sústave.\n": None,
+
         "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
-        "v dosahu miesta stavby sa nachádza distribučná sústava, ale neboli určené\n"
-        "technické podmienky pripojenia: Na pripojenie do distribučnej sústavy je potrebné\n"
-        "uzavrieť zmluvu o pripojení do distribučnej sústavy, na základe ktorej bude\n"
+        "v dosahu miesta stavby sa nachádza distribučná sústava, "
+        "ale neboli určené\n"
+        "technické podmienky pripojenia: Na pripojenie do distribučnej "
+        "sústavy je potrebné\n"
+        "uzavrieť zmluvu o pripojení do distribučnej sústavy, "
+        "na základe ktorej bude\n"
         "zabezpečená kapacita v distribučnej sústave.\n": None,
     }
 
@@ -31,10 +37,14 @@ def create_form() -> Form:
     answers = {
         "Stavbu možno pripojiť k distribučnej sústave.\n"
         "V dosahu miesta stavby sa nachádza distribučná sústava.\n": None,
+
         "Stavbu možno pripojiť k distribučnej sústave.\n"
-        "V dosahu miesta stavby sa nenachádza distribučná sústava – pre účely\n"
+        "V dosahu miesta stavby sa nenachádza distribučná "
+        "sústava – pre účely\n"
         "pripojenia stavby dôjde k jej rozšíreniu.\n": None,
-        "Stavbu nemožno pripojiť k distribučnej sústave, pretože ...\n": question,
+
+        "Stavbu nemožno pripojiť k distribučnej sústave, "
+        "pretože ...\n": question,
     }
 
     question = SingleChoiceQuestion(
@@ -64,12 +74,15 @@ def create_form() -> Form:
         "Odôvodnenie:\n"
         "Posudzovaná projektová dokumentácia nie je zhotovená v súlade\n"
         "so štandardami spoločnosti Západoslovenská distribučná.\n": question,
+
         "nesúhlas s posudzovanou dokumentáciou\n"
         "Odôvodnenie:\n"
         "Stavba má byť umiestnená v ochrannom pásme elektrických vedení\n"
         "a elektroenergetických zariadení spoločnosti Západoslovenská\n"
         "distribučná podľa § 43 zákona o energetike a jej realizáciou\n"
-        "môže dôjsť k ich poškodeniu alebo ohrozeniu ich prevádzky.\n": question,
+        "môže dôjsť k ich poškodeniu alebo "
+        "ohrozeniu ich prevádzky.\n": question,
+
         "nesúhlas s posudzovanou dokumentáciou\n"
         "Odôvodnenie:\n"
         "Stavba má byť umiestnená v ochrannom pásme elektronickej\n"
@@ -78,11 +91,16 @@ def create_form() -> Form:
         "môže dôjsť k ohrozeniu jej bezpečnosti a spoľahlivosti.\n": question,
     }
 
-    justification = SingleChoiceQuestion("Odôvodnenie nesúhlasu", "Záver", answers)
+    justification = SingleChoiceQuestion(
+        "Odôvodnenie nesúhlasu",
+        "Záver",
+        answers
+    )
 
     answers = {
         "súhlas s posudzovanou dokumentáciou\n": question,
-        "súhlas s posudzovanou dokumentáciou s podmienkami uvedenými v tomto vyjadrení\n": question,
+        "súhlas s posudzovanou dokumentáciou s podmienkami "
+        "uvedenými v tomto vyjadrení\n": question,
         "nesúhlas s posudzovanou dokumentáciou\n": justification,
     }
 

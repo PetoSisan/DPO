@@ -4,7 +4,12 @@ from docx import Document
 from docx.shared import RGBColor
 
 
-def fill(row, cell: int, header_data: dict[str, str], data: dict[str, str]) -> None:
+def fill(
+    row,
+    cell: int,
+    header_data: dict[str, str],
+    data: dict[str, str]
+) -> None:
     curr_cell = row.cells[cell]
     text = curr_cell.text.strip()
 
@@ -14,7 +19,6 @@ def fill(row, cell: int, header_data: dict[str, str], data: dict[str, str]) -> N
     if data.get(text) is not None:
         next_cell = row.cells[cell + 1]
         next_cell.text = data[text]
-
 
 
 def fill_doc(
@@ -31,7 +35,10 @@ def fill_doc(
                 fill(row, c, header_data, data)
 
     timestamp = date_time.strftime("%Y-%m-%d_%H-%M")
-    doc.paragraphs[len(doc.paragraphs) - 1].text = f"Edited by script on {timestamp}"
+
+    doc.paragraphs[len(doc.paragraphs) - 1].text = \
+        f"Edited by script on {timestamp}"
+
     run = doc.paragraphs[len(doc.paragraphs) - 1].runs[0]
     run.font.color.rgb = RGBColor(255, 255, 255)
     doc.save(file_name)

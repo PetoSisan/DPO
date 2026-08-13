@@ -5,7 +5,11 @@ from UI.GUI.views.View import View
 
 
 class SummaryView(View):
-    def __init__(self, qna: dict[str, list[str]], quit: Callable[[FormState], None]):
+    def __init__(
+        self,
+        qna: dict[str, list[str]],
+        quit: Callable[[FormState], None]
+    ):
         super().__init__("summary.ui")
         self.qna = qna
         self.ui.quit.clicked.connect(lambda: quit(FormState.ABORTED))

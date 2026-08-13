@@ -19,7 +19,7 @@ def parse_args():
     """
 
     parser = argparse.ArgumentParser(
-        description="Optional --dir folder with .xml files serving as an data input"
+        description="Optional --dir folder with .xml input files"
     )
 
     # Add optional argument
@@ -47,11 +47,15 @@ def process_dir(
     """Process files in `source_dir` using `scripts.get(file_type)` script.
 
     Params:
-        - `source_dir` (`Path`): Path to directory with files which will be processed using 'script'
+        - `source_dir` (`Path`): Path to directory with files
+           which will be processed using 'script'
+
         - `file_type` (`str`): type of processed files
-        - `scripts` (`dict[FileType, Callable[[], int]]`): collection of all supported scripts
-            which can be called in this function. Correct script (based on context) is chosen according
-            `file_type` parameter
+
+        - `scripts` (`dict[FileType, Callable[[], int]]`): collection of all
+           supported scriptswhich can be called in this function.
+           Correct script (based on context) is chosen according
+           `file_type` parameter
 
 
     Returns:
@@ -60,17 +64,19 @@ def process_dir(
             - 'Successfull' represents number of successfully processed files
 
     Raises:
-        `ValueError`: if `source_dir` is not a directory or if `file_type` is not in scripts as a key with associated script
+        `ValueError`: if `source_dir` is not a directory or if `file_type`
+        is not in scripts as a key with associated script
     """
     if not source_dir.is_dir():
         raise ValueError(
-            f'"{source_dir}" nie je priečinok. Skontrolujte prosím vstupný parameter a skúste znovu prosím.'
+            f'"{source_dir}" nie je priečinok. ' +
+            "Skontrolujte prosím vstupný parameter a skúste znovu prosím."
         )
 
     script: Callable[[], int] = scripts.get(file_type)
     if script is None:
         raise ValueError(
-            f'Zadaný formát súborov "{file_type}" nie podporovaný na spracovanie.'
+            f'Zadaný formát súborov "{file_type}" nie podporovaný.'
         )
 
     target_dir = Path.cwd()
@@ -95,7 +101,8 @@ def process_dir(
             target.unlink()
 
         except Exception as e:
-            print(f'Pri spracovani subora "{file}" vznikla neocakavana chyba :(.')
+            print(f'Pri spracovani subora "{file}"' +
+                  "vznikla neocakavana chyba :(.")
             print(f"Vyhodená chyba: {e}")
             error += 1
 
@@ -122,17 +129,20 @@ def run(script: Callable[[], int], source: Path) -> int:
 
 
 def main() -> int:
-    """Creates a 'DPOs' from files in `data_dir` with chosen file type with associated script.
+    """Creates a 'DPOs' from files in `data_dir`
+    with chosen file type with associated script.
 
     Params:
         None
 
     Returns:
         - `int`:
-                `0` if no error occurs and all files were successfully processed
-                `1` if either `data_dir` is not directory or a not supported `file_type` was chosen
-                `2` if unexpected error occurs :(
-                `3` if no error occures but not all files were successfully processed
+            - `0` if no error occurs and all files were successfully processed
+            - `1` if either `data_dir` is not directory or a not supported
+            `file_type` was chosen
+            - `2` if unexpected error occurs :(
+            - `3` if no error occures but not all files
+            were successfully processed
     """
     args = parse_args()
     data_dir = Path(args.dir)
@@ -156,7 +166,8 @@ def main() -> int:
         return 2
 
     print(
-        f'Program úspešne spracoval z priečinka "{data_dir!s}" {successfull} z {files_count} súborov.'
+        f'Program úspešne spracoval z priečinka "{data_dir!s}"' +
+        f' {successfull} z {files_count} súborov.'
     )
     input("Press Enter to exit...")
 

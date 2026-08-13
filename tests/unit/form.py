@@ -26,9 +26,12 @@ def create_form_test() -> None:
         ["Stavbu nemožno pripojiť k distribučnej sústave, pretože ...\n"],
         [
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
-            "v dosahu miesta stavby sa nachádza distribučná sústava, ale neboli určené\n"
-            "technické podmienky pripojenia: Na pripojenie do distribučnej sústavy je potrebné\n"
-            "uzavrieť zmluvu o pripojení do distribučnej sústavy, na základe ktorej bude\n"
+            "v dosahu miesta stavby sa nachádza distribučná sústava, "
+            "ale neboli určené\n"
+            "technické podmienky pripojenia: Na pripojenie do distribučnej "
+            "sústavy je potrebné\n"
+            "uzavrieť zmluvu o pripojení do distribučnej sústavy, "
+            "na základe ktorej bude\n"
             "zabezpečená kapacita v distribučnej sústave.\n"
         ],
     ]
@@ -36,7 +39,8 @@ def create_form_test() -> None:
     expected_answers = [
         [
             "súhlas s posudzovanou dokumentáciou\n",
-            "súhlas s posudzovanou dokumentáciou s podmienkami uvedenými v tomto vyjadrení\n",
+            "súhlas s posudzovanou dokumentáciou s podmienkami "
+            "uvedenými v tomto vyjadrení\n",
             "nesúhlas s posudzovanou dokumentáciou\n",
         ],
         [
@@ -44,17 +48,20 @@ def create_form_test() -> None:
             "Odôvodnenie:\n"
             "Posudzovaná projektová dokumentácia nie je zhotovená v súlade\n"
             "so štandardami spoločnosti Západoslovenská distribučná.\n",
+
             "nesúhlas s posudzovanou dokumentáciou\n"
             "Odôvodnenie:\n"
             "Stavba má byť umiestnená v ochrannom pásme elektrických vedení\n"
             "a elektroenergetických zariadení spoločnosti Západoslovenská\n"
             "distribučná podľa § 43 zákona o energetike a jej realizáciou\n"
             "môže dôjsť k ich poškodeniu alebo ohrozeniu ich prevádzky.\n",
+
             "nesúhlas s posudzovanou dokumentáciou\n"
             "Odôvodnenie:\n"
             "Stavba má byť umiestnená v ochrannom pásme elektronickej\n"
             "komunikačnej siete spoločnosti Západoslovenská distribučná\n"
-            "podľa § 23 zákona o elektronických komunikáciách a jej realizáciou\n"
+            "podľa § 23 zákona o elektronických komunikáciách "
+            "a jej realizáciou\n"
             "môže dôjsť k ohrozeniu jej bezpečnosti a spoľahlivosti.\n",
         ],
         [
@@ -69,28 +76,36 @@ def create_form_test() -> None:
         [
             "Stavbu možno pripojiť k distribučnej sústave.\n"
             "V dosahu miesta stavby sa nachádza distribučná sústava.\n",
+
             "Stavbu možno pripojiť k distribučnej sústave.\n"
-            "V dosahu miesta stavby sa nenachádza distribučná sústava – pre účely\n"
+            "V dosahu miesta stavby sa nenachádza distribučná sústava "
+            "– pre účely\n"
             "pripojenia stavby dôjde k jej rozšíreniu.\n",
+
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože ...\n",
         ],
         [
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
-            "stavba nie je elektroenergetickým zariadením ani odberným elektrickým zariadením\n",
+            "stavba nie je elektroenergetickým zariadením ani "
+            "odberným elektrickým zariadením\n",
+
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
             "v dosahu miesta stavby sa nenachádza distribučná sústava,\n"
             "alebo sa nenachádza distribučná sústava v dostatočnej kapacite\n"
             "pre pripojenie stavby a spoločnosť Západoslovenská distribučná\n"
             "a stavebník sa nedohodli na rozšírení distribučnej sústavy:\n"
-            "Na pripojenie do distribučnej sústavy je potrebné uzavrieť zmluvu\n"
-            "o pripojení do distribučnej sústavy,\n"
-            "na základe ktorej bude dohodnuté rozšírenie distribučnej sústavy\n"
-            "a zabezpečená kapacita v distribučnej sústave.\n",
+            "Na pripojenie do distribučnej sústavy je potrebné uzavrieť "
+            "zmluvu\n o pripojení do distribučnej sústavy,\n"
+            "na základe ktorej bude dohodnuté rozšírenie distribučnej "
+            "sústavy\n a zabezpečená kapacita v distribučnej sústave.\n",
+
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
-            "v dosahu miesta stavby sa nachádza distribučná sústava, ale neboli určené\n"
-            "technické podmienky pripojenia: Na pripojenie do distribučnej sústavy je potrebné\n"
-            "uzavrieť zmluvu o pripojení do distribučnej sústavy, na základe ktorej bude\n"
-            "zabezpečená kapacita v distribučnej sústave.\n",
+            "v dosahu miesta stavby sa nachádza distribučná sústava, "
+            "ale neboli určené\n"
+            "technické podmienky pripojenia: Na pripojenie do distribučnej "
+            "sústavy je potrebné\n"
+            "uzavrieť zmluvu o pripojení do distribučnej sústavy, na základe "
+            "ktorej bude\n zabezpečená kapacita v distribučnej sústave.\n",
         ],
     ]
 

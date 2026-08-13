@@ -16,14 +16,29 @@ ProjectOwner = Person  # stavebník
 def parse(
     data: OrderedDict[str, Any],
 ) -> tuple[list[Applicant], list[ProjectOwner], Project]:
-    """This is just a dummy parser. The actual implementation is hidden. See `README.md` for more info"""
-    address = Address("Stromova", "42", "12345", "Kholinar", "Central", "Alethkar")
-    applicants = [
-        PhysicalPerson("Ing.", "Jan", "Novak", address, "0912345678", "mail@gmail.com")
-    ]
-    project_owners = [
-        PhysicalPerson("Ing.", "Jan", "Novak", address, "0912345678", "mail@gmail.com")
-    ]
+    """This is just a dummy parser. The actual implementation is hidden.
+        See `README.md` for more info"""
+
+    address = Address(
+        "Stromova",
+        "42",
+        "12345",
+        "Kholinar",
+        "Central",
+        "Alethkar"
+    )
+
+    applicant = PhysicalPerson(
+                    "Ing.",
+                    "Jan",
+                    "Novak",
+                    address,
+                    "0912345678",
+                    "mail@gmail.com"
+                )
+
+    applicants = [applicant]
+    project_owners = [applicant]
 
     parcels = {
         "TeritoryA": {"A": "123", "B": "1235"},
@@ -31,10 +46,16 @@ def parse(
     }
     facilites = [
         Facility(
-            "Code1", "Facility1", "class", [FacilityPart("Code5", "FacilityPart1")]
+            "Code1",
+            "Facility1",
+            "class",
+            [FacilityPart("Code5", "FacilityPart1")]
         ),
         Facility(
-            "Code2", "Facility2", "class", [FacilityPart("Code5", "FacilityPart1")]
+            "Code2",
+            "Facility2",
+            "class",
+            [FacilityPart("Code5", "FacilityPart1")]
         ),
     ]
 
@@ -43,7 +64,11 @@ def parse(
     return applicants, project_owners, project
 
 
-def get_project_id(root: OrderedDict[str, Any] | None, project: Project | None) -> str:
+def get_project_id(
+        root: OrderedDict[str, Any] | None,
+        project: Project | None
+        ) -> str:
+
     if project is not None:
         return project.id
 
@@ -54,16 +79,20 @@ INCOMPLETE_DATA = "Ostatné údaje nie sú dostupné v žiadosti ani v PD."
 
 
 def prepare_applicants(
-    applicants: list[Person], header_data: dict[str, str], data: dict[str, str]
+    applicants: list[Person],
+    header_data: dict[str, str],
+    data: dict[str, str]
 ) -> None:
     for applicant in applicants:
         header_data["Meno Priezvisko"] = (
-            header_data.get("Meno Priezvisko", "") + f"{applicant.get_full_name()}"
+            header_data.get("Meno Priezvisko", "") +
+            f"{applicant.get_full_name()}"
         )
 
         header_data["Ulica číslo"] = (
-            header_data.get("Ulica číslo", "")
-            + f"{applicant.address.street} {applicant.address.building_number}"
+            header_data.get("Ulica číslo", "") +
+            f"{applicant.address.street}" +
+            f" {applicant.address.building_number}"
         )
 
         header_data["PSČ Mesto"] = (
@@ -71,13 +100,17 @@ def prepare_applicants(
             + f"{applicant.address.postal_code} {applicant.address.city} \n"
         )
 
-        data["Žiadateľ"] = data.get("Žiadateľ", "") + f"{applicant.to_string()} \n"
+        data["Žiadateľ"] = data.get("Žiadateľ", "") + \
+            f"{applicant.to_string()} \n"
 
         if not applicant.is_complete():
             data["Žiadateľ"] += f"\n{INCOMPLETE_DATA}\n"
 
 
-def prepare_project_owners(project_owners: list[Person], data: dict[str, str]) -> None:
+def prepare_project_owners(
+        project_owners: list[Person],
+        data: dict[str, str]
+        ) -> None:
     for project_owner in project_owners:
         data["Stavebník"] = (
             data.get("Stavebník", "") + f"{project_owner.to_string()} \n"

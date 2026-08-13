@@ -38,12 +38,16 @@ class Statement:
             print("Dáta vytiahnuté z formulára môžu byť nekompletné.")
 
         qna = {
-            row_name: "".join(answers) for row_name, answers in self.form.qna.items()
+            row_name: "".join(answers) for row_name, answers
+            in self.form.qna.items()
         }
         header_data, data = prepare_data(
-            self.applicants, self.project_owners, self.project, qna, self.date_time
+            self.applicants,
+            self.project_owners,
+            self.project,
+            qna,
+            self.date_time
         )
 
         copy(self.template_name, new_doc_name)
         fill_doc(new_doc_name, header_data, data, self.date_time)
-

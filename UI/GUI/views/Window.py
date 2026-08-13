@@ -28,7 +28,8 @@ class Window(QWidget):
 
     def create_question_view(self, question: Question) -> QuestionView:
         if isinstance(question, SingleChoiceQuestion):
-            return SingleChoiceQuestionView(question, self.messenger.add_answers)
+            return SingleChoiceQuestionView(
+                question, self.messenger.add_answers)
 
         return MultipleChoiceQuestionView(question, self.messenger.add_answers)
 

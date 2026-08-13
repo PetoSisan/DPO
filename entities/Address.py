@@ -31,4 +31,7 @@ class Address(Entity):
         Returns:
            - (`str`): returns string representation of an `Address` object
         """
-        return f"{self.street} {self.building_number}, {self.postal_code} {self.city}"
+        return (
+            f"{self.street} {self.building_number}, " +
+            f"{self.postal_code} {self.city}"
+        )

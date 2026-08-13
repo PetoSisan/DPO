@@ -7,7 +7,10 @@ from UI.GUI.views.View import View
 
 class QuestionView(View):
     def __init__(
-        self, design_file: str, q: Question, callback: Callable[[list[str]], None]
+        self,
+        design_file: str,
+        q: Question,
+        callback: Callable[[list[str]], None]
     ):
         super().__init__(design_file)
         self.question = q

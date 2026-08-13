@@ -8,12 +8,18 @@ def find_missing_attrs(person: Person, person_role: str) -> str:
     missing_attrs = person.get_missing_attrs()
 
     if len(missing_attrs) != 0:
-        missing_data += f"V žiadosti chýbajú niektoré dáta o osobe \"{person.get_full_name()}\" s rolou '{person_role}': {missing_attrs} \n"
-
+        missing_data += (
+            "V žiadosti chýbajú niektoré dáta o osobe "
+            f'"{person.get_full_name()}" s rolou '
+            f'"{person_role}": {missing_attrs} \n'
+        )
     return missing_data
 
 
-def find_missing_data(applicants: list[Person], project_owners: list[Person]) -> str:
+def find_missing_data(
+    applicants: list[Person],
+    project_owners: list[Person]
+) -> str:
     missing_data = ""
     for applicant in applicants:
         missing_data += find_missing_attrs(applicant, "Žiadateľ")
@@ -25,11 +31,18 @@ def find_missing_data(applicants: list[Person], project_owners: list[Person]) ->
 
 
 def log(
-    log_name: str, new_doc_name: str, error: str, project_id: str, missing_data: str
+    log_name: str,
+    new_doc_name: str,
+    error: str,
+    project_id: str,
+    missing_data: str
 ) -> None:
 
     with open(log_name, "a", encoding="utf-8") as f:
-        f.write(f'Záznam o priebehu spracovaní žiadosti stavby s ID "{project_id}": \n')
+        f.write(
+            "Záznam o priebehu spracovaní žiadosti "
+            f'stavby s ID "{project_id}": \n'
+        )
 
         if len(error) != 0:
             f.write(error)
@@ -39,7 +52,8 @@ def log(
             f.write(missing_data)
 
         f.write(
-            f'Program prebehol úspešne. Výstup môžete nájsť v súbore "{new_doc_name}". \n'
+            "Program prebehol úspešne."
+            f'Výstup môžete nájsť v súbore "{new_doc_name}". \n'
         )
 
 

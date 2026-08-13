@@ -25,7 +25,9 @@ def clean_temp(temp_path: Path) -> None:
     unlink(temp_path)
 
 
-DPO_FILE_PATTERN = "[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9] - DPO.docx"
+DPO_FILE_PATTERN = \
+    "[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9] - DPO.docx"
+
 SUCCESSFULL_PATTERN = "DPO-log_úspešne*.txt"
 UNSUCCESSFULL_PATTERN = "DPO-log_neúspešne*.txt"
 
@@ -46,14 +48,19 @@ def DPO_OK_test() -> None:
     project_id = file.split(" ")[0]
 
     with open(log, "r") as f:
-        assert any(
-            f'Záznam o priebehu spracovaní žiadosti stavby s ID "{project_id}":' in line
-            for line in f
-        )
-        assert any(
-            f'Program prebehol úspešne. Výstup môžete nájsť v súbore "{file}".' in line
-            for line in f
-        )
+        record_found = False
+        lines = f.readlines()
+        success_found = False
+        for line in lines:
+            if "Záznam o priebehu spracovaní žiadosti stavby " + \
+               f's ID "{project_id}":' in line:
+                record_found = True
+
+            if "Program prebehol úspešne. " + \
+               f'Výstup môžete nájsť v súbore "{file}".' in line:
+                success_found
+
+        assert record_found and success_found
 
 
 def DPO_NOK_test() -> None:

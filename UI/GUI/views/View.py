@@ -14,7 +14,9 @@ class View(QWidget):
 
     def load_ui(self, design_file: str):
         loader = QUiLoader()
-        path = os.fspath(Path(__file__).resolve().parent / "design" / design_file)
+        path = os.fspath(
+            Path(__file__).resolve().parent / "design" / design_file
+        )
         ui_file = QFile(path)
         ui_file.open(QFile.ReadOnly)
         self.ui = loader.load(ui_file)

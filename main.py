@@ -39,12 +39,16 @@ def DPO() -> int:
 
     except FileNotFoundError as e:
         error = (
-            "Súbor sa nenašiel. Prosím skontrolujte, či zadaný súbor existuje v pracovnom adresári."
+            "Súbor sa nenašiel. Prosím skontrolujte, " +
+            "či zadaný súbor existuje v pracovnom adresári."
             f" Vyhodená chyba: \n {e!s} \n"
         )
 
     except Exception as e:
-        error = f"Počas behu programu sa objavila neočakávaná chyba :(. Vyhodená chyba: \n {e!s} \n"
+        error = (
+            "Počas behu programu sa objavila neočakávaná chyba :(. " +
+            f"Vyhodená chyba: \n {e!s} \n"
+        )
 
     record(
         error,
