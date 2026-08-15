@@ -59,7 +59,7 @@ def DPO_OK_test() -> None:
             if "Program prebehol úspešne.\n" == line:
                 searched_lines += 1
 
-            if f'Výstup môžete nájsť v súbore "{file}".' == line:
+            if f'Výstup môžete nájsť v súbore "{file}".\n' == line:
                 searched_lines += 1
 
         assert searched_lines == 3
