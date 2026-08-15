@@ -4,7 +4,6 @@ from tests.unit.form import create_form_test
 
 def main() -> None:
     create_form_test()
-
     cleanup()
     DPO_OK_test()
     cleanup()

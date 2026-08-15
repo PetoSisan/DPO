@@ -50,7 +50,7 @@ def DPO_OK_test() -> None:
     with open(log, "r") as f:
         searched_lines = 0
         lines = f.readlines()
-    
+
         for line in lines:
             if "Záznam o priebehu spracovaní žiadosti stavby " + \
                f's ID "{project_id}":\n' == line:
@@ -58,7 +58,7 @@ def DPO_OK_test() -> None:
 
             if "Program prebehol úspešne.\n" == line:
                 searched_lines += 1
-            
+
             if f'Výstup môžete nájsť v súbore "{file}".' == line:
                 searched_lines += 1
 
