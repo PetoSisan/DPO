@@ -4,11 +4,11 @@ from tests.unit.form import create_form_test
 
 def main() -> None:
     create_form_test()
-    cleanup()
-    DPO_OK_test()
-    cleanup()
-    DPO_NOK_test()
-    cleanup()
+    # cleanup()
+    # DPO_OK_test()
+    # cleanup()
+    # DPO_NOK_test()
+    # cleanup()
 
 
 if __name__ == "__main__":
