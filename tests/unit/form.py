@@ -94,18 +94,19 @@ def create_form_test() -> None:
             "alebo sa nenachádza distribučná sústava v dostatočnej kapacite\n"
             "pre pripojenie stavby a spoločnosť Západoslovenská distribučná\n"
             "a stavebník sa nedohodli na rozšírení distribučnej sústavy:\n"
-            "Na pripojenie do distribučnej sústavy je potrebné uzavrieť "
-            "zmluvu\n o pripojení do distribučnej sústavy,\n"
-            "na základe ktorej bude dohodnuté rozšírenie distribučnej "
-            "sústavy\n a zabezpečená kapacita v distribučnej sústave.\n",
+            "Na pripojenie do distribučnej sústavy je potrebné uzavrieť zmluvu\n"
+            "o pripojení do distribučnej sústavy,\n"
+            "na základe ktorej bude dohodnuté rozšírenie distribučnej sústavy\n"
+            "a zabezpečená kapacita v distribučnej sústave.\n",
 
             "Stavbu nemožno pripojiť k distribučnej sústave, pretože\n"
             "v dosahu miesta stavby sa nachádza distribučná sústava, "
             "ale neboli určené\n"
             "technické podmienky pripojenia: Na pripojenie do distribučnej "
             "sústavy je potrebné\n"
-            "uzavrieť zmluvu o pripojení do distribučnej sústavy, na základe "
-            "ktorej bude\n zabezpečená kapacita v distribučnej sústave.\n",
+            "uzavrieť zmluvu o pripojení do distribučnej sústavy, "
+            "na základe ktorej bude\n"
+            "zabezpečená kapacita v distribučnej sústave.\n",
         ],
     ]
 

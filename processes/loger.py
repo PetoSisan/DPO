@@ -41,7 +41,7 @@ def log(
     with open(log_name, "a", encoding="utf-8") as f:
         f.write(
             "Záznam o priebehu spracovaní žiadosti "
-            f'stavby s ID "{project_id}": \n'
+            f'stavby s ID "{project_id}":\n'
         )
 
         if len(error) != 0:
@@ -52,8 +52,8 @@ def log(
             f.write(missing_data)
 
         f.write(
-            "Program prebehol úspešne."
-            f'Výstup môžete nájsť v súbore "{new_doc_name}". \n'
+            "Program prebehol úspešne.\n"
+            f'Výstup môžete nájsť v súbore "{new_doc_name}".'
         )
 
 

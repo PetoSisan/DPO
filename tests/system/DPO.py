@@ -48,19 +48,21 @@ def DPO_OK_test() -> None:
     project_id = file.split(" ")[0]
 
     with open(log, "r") as f:
-        record_found = False
+        searched_lines = 0
         lines = f.readlines()
-        success_found = False
+    
         for line in lines:
             if "Záznam o priebehu spracovaní žiadosti stavby " + \
-               f's ID "{project_id}":' in line:
-                record_found = True
+               f's ID "{project_id}":\n' == line:
+                searched_lines += 1
 
-            if "Program prebehol úspešne. " + \
-               f'Výstup môžete nájsť v súbore "{file}".' in line:
-                success_found
+            if "Program prebehol úspešne.\n" == line:
+                searched_lines += 1
+            
+            if f'Výstup môžete nájsť v súbore "{file}".' == line:
+                searched_lines += 1
 
-        assert record_found and success_found
+        assert searched_lines == 3
 
 
 def DPO_NOK_test() -> None:
