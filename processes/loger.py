@@ -53,7 +53,7 @@ def log(
 
         f.write(
             "Program prebehol úspešne.\n"
-            f'Výstup môžete nájsť v súbore "{new_doc_name}"\n.'
+            f'Výstup môžete nájsť v súbore "{new_doc_name}".\n'
         )
 
 
